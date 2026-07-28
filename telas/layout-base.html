@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Layout Base | Salao de Eventos</title>
+     <meta name="description" content="Layout base do prototipo de salao de eventos">
+     <link rel="shortcut icon" href="../assets/images/favicon.ico">
+     <link href="../assets/css/vendor.min.css" rel="stylesheet" type="text/css">
+     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css">
+     <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css">
+     <link href="../assets/css/site.css" rel="stylesheet" type="text/css">
+     <script src="../assets/js/config.min.js"></script>
+</head>
+
+<body>
+     <div class="wrapper">
+          <header class="topbar">
+               <div class="container-fluid">
+                    <div class="navbar-header">
+                         <div class="d-flex align-items-center gap-2">
+                              <div class="topbar-item">
+                                   <button type="button" class="button-toggle-menu topbar-button" aria-label="Alternar menu">
+                                        <i class="bx bx-menu fs-24 align-middle"></i>
+                                   </button>
+                              </div>
+                              <span class="fw-semibold event-brand">Salao de Eventos</span>
+                         </div>
+                         <div class="d-flex align-items-center gap-1">
+                              <div class="topbar-item">
+                                   <button type="button" class="topbar-button" id="light-dark-mode" aria-label="Alternar tema">
+                                        <i class="bx bx-moon fs-24 align-middle light-mode"></i>
+                                        <i class="bx bx-sun fs-24 align-middle dark-mode"></i>
+                                   </button>
+                              </div>
+                              <a class="btn btn-sm btn-outline-primary" href="../auth/login.html">Login</a>
+                         </div>
+                    </div>
+               </div>
+          </header>
+
+          <div class="main-nav">
+               <div class="logo-box">
+                    <a href="Tela principal.html" class="logo-dark">
+                         <img src="../assets/images/logo-sm.png" class="logo-sm" alt="Logo">
+                         <img src="../assets/images/logo-dark.png" class="logo-lg" alt="Salao de Eventos">
+                    </a>
+                    <a href="Tela principal.html" class="logo-light">
+                         <img src="../assets/images/logo-sm.png" class="logo-sm" alt="Logo">
+                         <img src="../assets/images/logo-light.png" class="logo-lg" alt="Salao de Eventos">
+                    </a>
+               </div>
+
+               <button type="button" class="button-sm-hover" aria-label="Expandir menu">
+                    <i class="bx bx-menu button-sm-hover-icon"></i>
+               </button>
+
+               <div class="scrollbar" data-simplebar>
+                    <ul class="navbar-nav" id="navbar-nav">
+                         <li class="menu-title">Menu</li>
+                         <li class="nav-item">
+                              <a class="nav-link" href="Tela principal.html">
+                                   <span class="nav-icon"><i class="bx bx-home-alt"></i></span>
+                                   <span class="nav-text">Dashboard</span>
+                              </a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link active" href="layout-base.html">
+                                   <span class="nav-icon"><i class="bx bx-grid-alt"></i></span>
+                                   <span class="nav-text">Layout Base</span>
+                              </a>
+                         </li>
+                         <li class="menu-title">Acesso</li>
+                         <li class="nav-item">
+                              <a class="nav-link" href="../auth/login.html">
+                                   <span class="nav-icon"><i class="bx bx-log-in"></i></span>
+                                   <span class="nav-text">Login</span>
+                              </a>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" href="../auth/register.html">
+                                   <span class="nav-icon"><i class="bx bx-user-plus"></i></span>
+                                   <span class="nav-text">Register</span>
+                              </a>
+                         </li>
+                    </ul>
+               </div>
+          </div>
+
+          <div class="page-content">
+               <div class="container-fluid">
+                    <div class="row">
+                         <div class="col-12">
+                              <div class="page-title-box">
+                                   <h4 class="mb-0 fw-semibold page-title">Layout Base</h4>
+                                   <ol class="breadcrumb mb-0">
+                                        <li class="breadcrumb-item"><a href="Tela principal.html">Salao de Eventos</a></li>
+                                        <li class="breadcrumb-item active">Layout Base</li>
+                                   </ol>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="row">
+                         <div class="col-12">
+                              <div class="card layout-placeholder">
+                                   <div class="card-body d-flex align-items-center justify-content-center text-center">
+                                        <div>
+                                             <i class="bx bx-grid-alt fs-48 text-primary"></i>
+                                             <h4 class="mt-3 mb-1">Area de conteudo</h4>
+                                             <p class="text-muted mb-0">Estrutura base pronta para receber novos modulos quando forem necessarios.</p>
+                                        </div>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+
+               <footer class="footer">
+                    <div class="container-fluid">
+                         <div class="row">
+                              <div class="col-12 text-center">
+                                   <script>document.write(new Date().getFullYear())</script> &copy; Salao de Eventos
+                              </div>
+                         </div>
+                    </div>
+               </footer>
+          </div>
+     </div>
+
+     <script src="../assets/js/vendor.js"></script>
+     <script src="../assets/js/app.js"></script>
+</body>
+</html>

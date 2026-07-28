@@ -1,0 +1,59 @@
+body {
+     letter-spacing: 0;
+}
+
+.event-brand {
+     color: #1bb394;
+     font-weight: 700;
+}
+
+.topbar .app-search .form-control {
+     min-width: 240px;
+}
+
+.logo-box img.logo-lg {
+     max-height: 24px;
+     width: auto;
+}
+
+.event-hero {
+     background: linear-gradient(135deg, rgba(27, 179, 148, .14), rgba(30, 132, 196, .12));
+     border: 1px solid rgba(30, 132, 196, .08);
+}
+
+.event-stat-icon {
+     align-items: center;
+     border-radius: .375rem;
+     display: inline-flex;
+     height: 44px;
+     justify-content: center;
+     width: 44px;
+}
+
+.event-progress {
+     height: 8px;
+}
+
+.event-table td,
+.event-table th {
+     vertical-align: middle;
+}
+
+.layout-placeholder {
+     min-height: 360px;
+}
+
+.auth-copy {
+     color: var(--bs-secondary-color);
+     max-width: 34rem;
+}
+
+@media (max-width: 767.98px) {
+     .topbar .app-search {
+          display: none !important;
+     }
+
+     .page-title-box .page-title {
+          font-size: 1.05rem;
+     }
+}

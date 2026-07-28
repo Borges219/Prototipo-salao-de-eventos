@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Register | Salao de Eventos</title>
+     <meta name="robots" content="noindex">
+     <link rel="shortcut icon" href="../assets/images/favicon.ico">
+     <link href="../assets/css/vendor.min.css" rel="stylesheet" type="text/css">
+     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css">
+     <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css">
+     <link href="../assets/css/site.css" rel="stylesheet" type="text/css">
+     <script src="../assets/js/config.min.js"></script>
+</head>
+
+<body class="authentication-bg">
+     <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
+          <div class="container">
+               <div class="row justify-content-center">
+                    <div class="col-xl-5 col-lg-6">
+                         <div class="card auth-card">
+                              <div class="card-body px-3 py-5">
+                                   <div class="mx-auto mb-4 text-center auth-logo">
+                                        <a href="../telas/Tela principal.html" class="logo-dark">
+                                             <img src="../assets/images/logo-sm.png" height="30" class="me-1" alt="Logo">
+                                             <img src="../assets/images/logo-dark.png" height="24" alt="Salao de Eventos">
+                                        </a>
+                                        <a href="../telas/Tela principal.html" class="logo-light">
+                                             <img src="../assets/images/logo-sm.png" height="30" class="me-1" alt="Logo">
+                                             <img src="../assets/images/logo-light.png" height="24" alt="Salao de Eventos">
+                                        </a>
+                                   </div>
+
+                                   <h2 class="fw-bold text-center fs-18">Criar conta</h2>
+                                   <p class="text-muted text-center mt-1 mb-4">Registe um novo utilizador para o painel.</p>
+
+                                   <div class="px-4">
+                                        <form action="../telas/Tela principal.html" class="authentication-form needs-validation" novalidate>
+                                             <div class="mb-3">
+                                                  <label class="form-label" for="name">Nome</label>
+                                                  <input type="text" id="name" name="name" class="form-control" placeholder="Nome completo" required>
+                                                  <div class="invalid-feedback">Informe o nome.</div>
+                                             </div>
+                                             <div class="mb-3">
+                                                  <label class="form-label" for="email">Email</label>
+                                                  <input type="email" id="email" name="email" class="form-control" placeholder="nome@exemplo.com" required>
+                                                  <div class="invalid-feedback">Informe um email valido.</div>
+                                             </div>
+                                             <div class="mb-3">
+                                                  <label class="form-label" for="password">Senha</label>
+                                                  <input type="password" id="password" name="password" class="form-control" placeholder="Crie uma senha" required>
+                                                  <div class="invalid-feedback">Informe a senha.</div>
+                                             </div>
+                                             <div class="mb-3">
+                                                  <div class="form-check">
+                                                       <input type="checkbox" class="form-check-input" id="terms" required>
+                                                       <label class="form-check-label" for="terms">Confirmo os dados do utilizador</label>
+                                                       <div class="invalid-feedback">Confirme antes de continuar.</div>
+                                                  </div>
+                                             </div>
+                                             <div class="mb-1 text-center d-grid">
+                                                  <button class="btn btn-primary" type="submit">Criar conta</button>
+                                             </div>
+                                        </form>
+                                   </div>
+                              </div>
+                         </div>
+
+                         <p class="mb-0 text-center">Ja tem conta? <a href="login.html" class="text-reset fw-bold ms-1">Entrar</a></p>
+                    </div>
+               </div>
+          </div>
+     </div>
+
+     <script src="../assets/js/vendor.js"></script>
+     <script src="../assets/js/app.js"></script>
+</body>
+</html>
