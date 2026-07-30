@@ -1,81 +1,12 @@
-document.addEventListener("DOMContentLoaded", function () {
-     if (!window.ApexCharts) return;
-
-     var revenueTarget = document.querySelector("#events-revenue-chart");
-     if (revenueTarget) {
-          new ApexCharts(revenueTarget, {
-               chart: {
-                    height: 312,
-                    type: "area",
-                    toolbar: { show: false }
-               },
-               series: [
-                    {
-                         name: "Receita",
-                         data: [42, 58, 51, 74, 88, 93, 106, 118, 126, 139, 151, 164]
-                    },
-                    {
-                         name: "Reservas",
-                         data: [18, 22, 20, 27, 31, 34, 39, 42, 41, 46, 49, 53]
-                    }
-               ],
-               colors: ["#1bb394", "#1e84c4"],
-               dataLabels: { enabled: false },
-               stroke: { curve: "smooth", width: 3 },
-               fill: {
-                    type: "gradient",
-                    gradient: {
-                         opacityFrom: .32,
-                         opacityTo: .04,
-                         stops: [0, 90]
-                    }
-               },
-               grid: {
-                    borderColor: "rgba(132, 134, 167, .18)",
-                    strokeDashArray: 3
-               },
-               xaxis: {
-                    categories: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
-               },
-               yaxis: {
-                    labels: {
-                         formatter: function (value) {
-                              return value + "k";
-                         }
-                    }
-               },
-               tooltip: {
-                    shared: true
-               }
-          }).render();
-     }
-
-     var typeTarget = document.querySelector("#event-types-chart");
-     if (typeTarget) {
-          new ApexCharts(typeTarget, {
-               chart: {
-                    height: 270,
-                    type: "donut"
-               },
-               series: [38, 27, 21, 14],
-               labels: ["Casamentos", "Corporativos", "Formaturas", "Sociais"],
-               colors: ["#1bb394", "#1e84c4", "#f8ac59", "#7f56da"],
-               legend: {
-                    position: "bottom"
-               },
-               dataLabels: {
-                    enabled: false
-               },
-               stroke: {
-                    width: 0
-               },
-               plotOptions: {
-                    pie: {
-                         donut: {
-                              size: "72%"
-                         }
-                    }
-               }
-          }).render();
-     }
+document.addEventListener("DOMContentLoaded",function(){
+  var sidebar=document.getElementById("sidebar"),toggle=document.getElementById("menuToggle"),backdrop=document.getElementById("sidebarBackdrop");
+  function closeMenu(){if(!sidebar)return;sidebar.classList.remove("open");backdrop.classList.remove("show");toggle.setAttribute("aria-expanded","false")}
+  if(toggle)toggle.addEventListener("click",function(){var open=sidebar.classList.toggle("open");backdrop.classList.toggle("show",open);toggle.setAttribute("aria-expanded",String(open))});
+  if(backdrop)backdrop.addEventListener("click",closeMenu);
+  document.querySelectorAll(".sidebar-nav a").forEach(function(link){link.addEventListener("click",function(){if(window.innerWidth<900)closeMenu()})});
+  if(!window.ApexCharts)return;
+  var revenue=document.querySelector("#events-revenue-chart");
+  if(revenue)new ApexCharts(revenue,{chart:{height:255,type:"area",toolbar:{show:false},fontFamily:'Inter, "Segoe UI", sans-serif'},series:[{name:"Receita",data:[620,710,680,830,790,920,890,1010,1080,1170,1130,1250]},{name:"Despesas",data:[380,420,390,480,450,510,490,560,590,610,580,640]}],colors:["#153e63","#111111"],dataLabels:{enabled:false},stroke:{curve:"smooth",width:2.2},fill:{type:"gradient",gradient:{opacityFrom:.2,opacityTo:.01,stops:[0,95]}},grid:{borderColor:"#e7e7e7",strokeDashArray:4},xaxis:{categories:["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],axisBorder:{show:false},axisTicks:{show:false},labels:{style:{colors:"#888888",fontSize:"9px"}}},yaxis:{labels:{formatter:function(v){return v>=1000?(v/1000).toFixed(1)+"M":v+"k"},style:{colors:"#888888",fontSize:"9px"}}},legend:{show:false},tooltip:{shared:true,y:{formatter:function(v){return "MZN "+v+".000"}}}}).render();
+  var occupancy=document.querySelector("#event-types-chart");
+  if(occupancy)new ApexCharts(occupancy,{chart:{height:165,type:"donut"},series:[42,28,20,10],labels:["Salão Nobre","Auditório","Jardim","Terraço"],colors:["#153e63","#111111","#6d8eac","#dddddd"],legend:{show:false},dataLabels:{enabled:false},stroke:{width:2,colors:["#fff"]},plotOptions:{pie:{donut:{size:"72%",labels:{show:true,name:{show:true,fontSize:"9px",color:"#777777",offsetY:14},value:{show:true,fontFamily:"Georgia, serif",fontSize:"22px",fontWeight:600,color:"#111111",offsetY:-10,formatter:function(){return "78%"}},total:{show:true,label:"Ocupação",formatter:function(){return "78%"}}}}}}}).render();
 });

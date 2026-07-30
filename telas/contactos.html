@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contactos — Espaço ON</title>
+  <meta name="description" content="Entre em contacto com a equipa do Espaço ON.">
+  <link rel="shortcut icon" href="../assets/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="../assets/css/icons.min.css" rel="stylesheet">
+  <link href="../assets/css/site.css" rel="stylesheet">
+  <link href="../assets/css/portal.css" rel="stylesheet">
+</head>
+<body class="portal-body contact-page">
+  <header class="portal-header">
+    <a class="portal-brand" href="Tela principal.html"><img src="../assets/images/espacon-logo.png" alt="Espaço ON"></a>
+    <button class="portal-menu" id="portalMenu" aria-label="Abrir menu" aria-expanded="false"><i class="bx bx-menu"></i></button>
+    <nav class="portal-nav" id="portalNav" aria-label="Navegação principal">
+      <a href="Tela principal.html">Início</a><a href="Tela principal.html#espacos">Explorar espaços</a><a href="Tela principal.html#como-funciona">Como funciona</a><a class="active" href="contactos.html">Contactos</a>
+    </nav>
+    <div class="portal-account"><a class="login-link" href="../auth/login.html">Entrar</a><a class="signup-button" href="../auth/register.html">Criar conta</a></div>
+  </header>
+
+  <main>
+    <section class="contact-hero">
+      <div><span><i class="bx bx-message-rounded-dots"></i> Estamos disponíveis para ajudar</span><h1>Vamos conversar?</h1><p>Tem dúvidas sobre um espaço, uma reserva ou sobre como funciona a plataforma? Fale com a nossa equipa.</p></div>
+    </section>
+
+    <section class="contact-layout">
+      <aside class="contact-info">
+        <div class="contact-heading"><span>Fale connosco</span><h2>Escolha o canal mais conveniente</h2><p>Respondemos às mensagens durante o nosso horário de atendimento.</p></div>
+        <div class="contact-method"><i class="bx bx-phone"></i><div><small>Telefone</small><strong>+258 84 000 0000</strong><span>Chamadas e WhatsApp</span></div></div>
+        <div class="contact-method"><i class="bx bx-envelope"></i><div><small>E-mail</small><strong>contacto@espacoon.co.mz</strong><span>Resposta em até 1 dia útil</span></div></div>
+        <div class="contact-method"><i class="bx bx-map"></i><div><small>Localização</small><strong>Maputo, Moçambique</strong><span>Atendimento mediante marcação</span></div></div>
+        <div class="contact-method"><i class="bx bx-time-five"></i><div><small>Horário</small><strong>Segunda a sexta-feira</strong><span>08:00 às 17:00</span></div></div>
+      </aside>
+
+      <section class="contact-form-card" aria-labelledby="formTitle">
+        <span>Envie uma mensagem</span><h2 id="formTitle">Como podemos ajudar?</h2>
+        <form id="contactForm">
+          <div class="contact-form-row"><label>Nome completo<input name="name" type="text" placeholder="O seu nome" required></label><label>Telefone<input name="phone" type="tel" placeholder="+258 8X XXX XXXX" required></label></div>
+          <label>E-mail<input name="email" type="email" placeholder="nome@email.com" required></label>
+          <label>Assunto<select name="subject" required><option value="">Seleccione o assunto</option><option>Dúvida sobre um espaço</option><option>Ajuda com uma reserva</option><option>Quero anunciar o meu espaço</option><option>Suporte técnico</option><option>Outro assunto</option></select></label>
+          <label>Mensagem<textarea name="message" rows="5" placeholder="Descreva como podemos ajudar..." required></textarea></label>
+          <button type="submit"><i class="bx bx-send"></i> Enviar mensagem</button>
+          <p class="form-privacy"><i class="bx bx-lock-alt"></i> Os seus dados serão usados apenas para responder a esta mensagem.</p>
+        </form>
+      </section>
+    </section>
+
+    <section class="contact-support"><i class="bx bx-help-circle"></i><div><h2>Precisa de uma resposta rápida?</h2><p>Consulte as perguntas frequentes sobre pesquisa, visitas, propostas e reservas.</p></div><a href="Tela principal.html#como-funciona">Ver como funciona <i class="bx bx-right-arrow-alt"></i></a></section>
+  </main>
+
+  <footer class="portal-footer"><img src="../assets/images/espacon-logo.png" alt="Espaço ON"><p>Encontre o espaço certo. Crie memórias que ficam.</p><div><a href="Tela principal.html">Início</a><a href="Tela principal.html#espacos">Espaços</a><a href="contactos.html">Contactos</a><a href="../auth/login.html">Entrar</a></div><small>© 2026 Espaço ON · Maputo, Moçambique</small></footer>
+  <div class="portal-toast" id="portalToast" role="status" aria-live="polite"></div>
+  <script src="../assets/js/contactos.js"></script>
+</body>
+</html>
