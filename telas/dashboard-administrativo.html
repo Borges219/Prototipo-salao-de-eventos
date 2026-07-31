@@ -3,76 +3,297 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard administrativo — Espaço ON</title>
-  <meta name="description" content="Painel administrativo do Espaço ON">
+  <title>Painel administrativo | Espaço ON</title>
+  <meta name="description" content="Painel administrativo do Espaço ON.">
+  <meta name="theme-color" content="#ffffff">
   <link rel="shortcut icon" href="../assets/images/favicon.ico">
-  <link href="../assets/css/vendor.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link href="../assets/css/icons.min.css" rel="stylesheet">
-  <link href="../assets/css/app.min.css" rel="stylesheet">
-  <link href="../assets/css/site.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/dashboard.css" rel="stylesheet">
 </head>
-<body class="dashboard-body">
-  <div class="dashboard-shell">
-    <aside class="dashboard-sidebar" id="sidebar" aria-label="Navegação principal">
-      <a class="brand" href="Tela principal.html"><img class="brand-logo" src="../assets/images/espacon-logo.png" alt="Espaço ON"></a>
-      <nav class="sidebar-nav">
+<body class="app">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar__brand" href="Tela principal.html">
+        <img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="170" height="55">
+      </a>
+
+      <nav aria-label="Navegação do painel">
         <p class="nav-caption">Principal</p>
-        <a class="active" href="#"><i class="bx bx-grid-alt"></i><span>Visão geral</span></a>
-        <a href="dashboard-proprietario-visitas.html"><i class="bx bx-calendar"></i><span>SolicitaÃ§Ãµes de visitas</span><b>3</b></a>
+        <a href="dashboard-administrativo.html" aria-current="page"><i class="bx bx-grid-alt"></i><span>Visão geral</span></a>
+        <a href="dashboard-proprietario-visitas.html"><i class="bx bx-calendar"></i><span>Solicitações de visitas</span><b>3</b></a>
         <a href="#"><i class="bx bx-bookmark"></i><span>Reservas</span></a>
         <a href="#"><i class="bx bx-building-house"></i><span>Espaços</span></a>
+
         <p class="nav-caption">Gestão</p>
         <a href="#"><i class="bx bx-user"></i><span>Clientes</span></a>
         <a href="#"><i class="bx bx-wallet"></i><span>Financeiro</span></a>
         <a href="#"><i class="bx bx-bar-chart-alt-2"></i><span>Relatórios</span></a>
         <a href="#"><i class="bx bx-cog"></i><span>Definições</span></a>
       </nav>
-      <div class="sidebar-help"><i class="bx bx-headphone"></i><div><strong>Precisa de ajuda?</strong><small>A nossa equipa está disponível.</small></div><button type="button">Contactar suporte</button></div>
+
+      <div class="sidebar__help">
+        <i class="bx bx-headphone"></i>
+        <div>
+          <strong>Precisa de ajuda?</strong>
+          <small>A nossa equipa está disponível.</small>
+        </div>
+        <button class="btn btn--navy btn--block" type="button">Contactar suporte</button>
+      </div>
     </aside>
 
-    <div class="dashboard-main">
-      <header class="dashboard-topbar">
-        <button class="icon-button menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"><i class="bx bx-menu"></i></button>
-        <h1 class="topbar-title">Dashboard</h1>
+    <div class="app-main">
+      <header class="app-topbar">
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+          <i class="bx bx-menu"></i>
+        </button>
+        <h1>Painel</h1>
+
         <div class="topbar-actions">
-          <label class="dashboard-search"><i class="bx bx-search"></i><input id="dashboardSearch" type="search" placeholder="Pesquisar reservas, clientes..." aria-label="Pesquisar"></label>
-          <button class="icon-button" aria-label="Notificações"><i class="bx bx-bell"></i><span class="notification-dot"></span></button>
-          <button class="header-profile" type="button" aria-label="Abrir menu de Amélia Manuel"><span class="header-avatar">AM</span><span class="header-profile-copy"><strong>Amélia Manuel</strong><small>Administradora</small></span><i class="bx bx-dots-horizontal-rounded"></i></button>
+          <label class="search-box">
+            <i class="bx bx-search"></i>
+            <input type="search" placeholder="Pesquisar reservas, clientes" aria-label="Pesquisar">
+          </label>
+          <button class="icon-btn" type="button" aria-label="Notificações">
+            <i class="bx bx-bell"></i>
+            <span class="dot"></span>
+          </button>
+          <button class="profile-btn" type="button">
+            <span class="avatar">AM</span>
+            <div>
+              <strong>Amélia Manuel</strong>
+              <small>Administradora</small>
+            </div>
+            <i class="bx bx-chevron-down"></i>
+          </button>
         </div>
       </header>
 
-      <main class="dashboard-content">
-        <section class="welcome-row"><div><p class="eyebrow">Quarta-feira, 29 de julho</p><h1>Bom dia, Amélia.</h1><p>Acompanhe o desempenho e mantenha os próximos eventos sob controlo.</p></div></section>
+      <main class="app-content">
+        <section class="welcome">
+          <div>
+            <span class="eyebrow">Quarta-feira, 29 de Julho</span>
+            <h2>Bom dia, Amélia.</h2>
+            <p>Acompanhe o desempenho e mantenha os próximos eventos sob controlo.</p>
+          </div>
+          <a class="btn btn--primary" href="dashboard-proprietario-visitas.html">
+            <i class="bx bx-calendar-check"></i> Ver pedidos de visita
+          </a>
+        </section>
 
         <section class="metric-grid" aria-label="Resumo de desempenho">
-          <article class="metric-card"><div class="metric-head"><span>Receita mensal</span><i class="bx bx-wallet metric-icon amber"></i></div><strong>MZN 1,25M</strong><p><em class="up"><i class="bx bx-trending-up"></i> 12,4%</em> em relação a junho</p><div class="mini-bars amber-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
-          <article class="metric-card"><div class="metric-head"><span>Reservas confirmadas</span><i class="bx bx-calendar-check metric-icon green"></i></div><strong>48</strong><p><em class="up"><i class="bx bx-trending-up"></i> 8,1%</em> em relação a junho</p><div class="mini-bars green-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
-          <article class="metric-card"><div class="metric-head"><span>Taxa de ocupação</span><i class="bx bx-pie-chart-alt metric-icon blue"></i></div><strong>78%</strong><p><em class="up"><i class="bx bx-trending-up"></i> 5,6%</em> em relação a junho</p><div class="progress-track"><span style="width:78%"></span></div></article>
-          <article class="metric-card"><div class="metric-head"><span>Pedidos pendentes</span><i class="bx bx-time-five metric-icon rose"></i></div><strong>12</strong><p><em class="down"><i class="bx bx-trending-down"></i> 3,2%</em> em relação a junho</p><div class="request-stack"><span>5 hoje</span><span>7 anteriores</span></div></article>
+          <article class="card metric">
+            <div class="metric__head">
+              <span>Receita mensal</span>
+              <i class="bx bx-wallet"></i>
+            </div>
+            <strong>MZN 1,25M</strong>
+            <p><em class="up"><i class="bx bx-trending-up"></i> 12,4%</em> em relação a Junho</p>
+            <div class="sparkline" aria-hidden="true">
+              <i style="height:8px"></i><i style="height:13px"></i><i style="height:10px"></i>
+              <i style="height:20px"></i><i style="height:15px"></i><i style="height:24px"></i><i style="height:30px"></i>
+            </div>
+          </article>
+
+          <article class="card metric">
+            <div class="metric__head">
+              <span>Reservas confirmadas</span>
+              <i class="bx bx-calendar-check"></i>
+            </div>
+            <strong>48</strong>
+            <p><em class="up"><i class="bx bx-trending-up"></i> 8,1%</em> em relação a Junho</p>
+            <div class="sparkline" aria-hidden="true">
+              <i style="height:12px"></i><i style="height:9px"></i><i style="height:17px"></i>
+              <i style="height:14px"></i><i style="height:22px"></i><i style="height:19px"></i><i style="height:27px"></i>
+            </div>
+          </article>
+
+          <article class="card metric">
+            <div class="metric__head">
+              <span>Taxa de ocupação</span>
+              <i class="bx bx-pie-chart-alt"></i>
+            </div>
+            <strong>78%</strong>
+            <p><em class="up"><i class="bx bx-trending-up"></i> 5,6%</em> em relação a Junho</p>
+            <div class="track"><span style="width:78%"></span></div>
+          </article>
+
+          <article class="card metric">
+            <div class="metric__head">
+              <span>Pedidos pendentes</span>
+              <i class="bx bx-time-five"></i>
+            </div>
+            <strong>12</strong>
+            <p><em class="down"><i class="bx bx-trending-down"></i> 3,2%</em> em relação a Junho</p>
+            <div class="chip-row">
+              <span>5 hoje</span>
+              <span>7 anteriores</span>
+            </div>
+          </article>
         </section>
 
-        <section class="dashboard-grid">
-          <article class="panel revenue-panel"><div class="panel-heading"><div><h2>Desempenho financeiro</h2><p>Receitas e despesas ao longo do ano</p></div><div class="chart-legend"><span><i class="revenue-dot"></i>Receita</span><span><i class="expense-dot"></i>Despesas</span></div></div><div id="events-revenue-chart" class="chart-area" aria-label="Gráfico de receitas e despesas"></div></article>
-          <article class="panel agenda-panel"><div class="panel-heading"><div><h2>Próximos eventos</h2><p>Agenda dos próximos dias</p></div><a href="#">Ver agenda <i class="bx bx-right-arrow-alt"></i></a></div><div class="event-list">
-            <div class="event-item"><time><b>30</b><span>JUL</span></time><div><strong>Casamento de Lídia &amp; Tomás</strong><p><i class="bx bx-time"></i> 16:00 · Salão Nobre</p></div><span class="status confirmed">Confirmado</span></div>
-            <div class="event-item"><time><b>02</b><span>AGO</span></time><div><strong>Conferência MozTech</strong><p><i class="bx bx-time"></i> 08:30 · Auditório</p></div><span class="status preparation">Preparação</span></div>
-            <div class="event-item"><time><b>05</b><span>AGO</span></time><div><strong>Aniversário da Marta</strong><p><i class="bx bx-time"></i> 18:00 · Jardim</p></div><span class="status pending">Pendente</span></div>
-            <div class="event-item"><time><b>08</b><span>AGO</span></time><div><strong>Gala Fundação Futuro</strong><p><i class="bx bx-time"></i> 19:30 · Salão Nobre</p></div><span class="status confirmed">Confirmado</span></div>
-          </div></article>
+        <section class="panel-grid">
+          <article class="card">
+            <div class="panel__head">
+              <div>
+                <h2>Desempenho financeiro</h2>
+                <p>Receitas e despesas ao longo do ano</p>
+              </div>
+              <div class="legend">
+                <span><i class="dot-revenue"></i>Receita</span>
+                <span><i class="dot-expense"></i>Despesas</span>
+              </div>
+            </div>
+            <div class="chart" id="revenueChart" aria-label="Gráfico de receitas e despesas"></div>
+          </article>
+
+          <article class="card">
+            <div class="panel__head">
+              <div>
+                <h2>Próximos eventos</h2>
+                <p>Agenda dos próximos dias</p>
+              </div>
+              <a class="link-arrow" href="#">Ver agenda <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+
+            <div class="agenda">
+              <div>
+                <time datetime="2026-07-30"><b>30</b><span>JUL</span></time>
+                <div>
+                  <strong>Casamento de Lídia &amp; Tomás</strong>
+                  <p><i class="bx bx-time"></i> 16:00 · Salão Nobre</p>
+                </div>
+                <span class="badge badge--ok">Confirmado</span>
+              </div>
+              <div>
+                <time datetime="2026-08-02"><b>02</b><span>AGO</span></time>
+                <div>
+                  <strong>Conferência MozTech</strong>
+                  <p><i class="bx bx-time"></i> 08:30 · Auditório</p>
+                </div>
+                <span class="badge badge--warn">Preparação</span>
+              </div>
+              <div>
+                <time datetime="2026-08-05"><b>05</b><span>AGO</span></time>
+                <div>
+                  <strong>Aniversário da Marta</strong>
+                  <p><i class="bx bx-time"></i> 18:00 · Jardim</p>
+                </div>
+                <span class="badge badge--info">Pendente</span>
+              </div>
+              <div>
+                <time datetime="2026-08-08"><b>08</b><span>AGO</span></time>
+                <div>
+                  <strong>Gala Fundação Futuro</strong>
+                  <p><i class="bx bx-time"></i> 19:30 · Salão Nobre</p>
+                </div>
+                <span class="badge badge--ok">Confirmado</span>
+              </div>
+            </div>
+          </article>
         </section>
 
-        <section class="dashboard-grid bottom-grid">
-          <article class="panel bookings-panel"><div class="panel-heading"><div><h2>Reservas recentes</h2><p>Últimas solicitações recebidas</p></div><a href="#">Ver todas <i class="bx bx-right-arrow-alt"></i></a></div><div class="table-responsive"><table class="booking-table"><thead><tr><th>Cliente</th><th>Tipo de evento</th><th>Data</th><th>Valor</th><th>Estado</th><th></th></tr></thead><tbody>
-            <tr><td><span class="client-avatar purple">LC</span><div><strong>Luísa Costa</strong><small>luisa@email.com</small></div></td><td>Casamento</td><td>14 Ago 2026</td><td>MZN 185.000</td><td><span class="status confirmed">Confirmada</span></td><td><button aria-label="Mais opções"><i class="bx bx-dots-horizontal-rounded"></i></button></td></tr>
-            <tr><td><span class="client-avatar orange">JM</span><div><strong>João Mabunda</strong><small>joao@email.com</small></div></td><td>Corporativo</td><td>21 Ago 2026</td><td>MZN 96.500</td><td><span class="status pending">Pendente</span></td><td><button aria-label="Mais opções"><i class="bx bx-dots-horizontal-rounded"></i></button></td></tr>
-            <tr><td><span class="client-avatar teal">AN</span><div><strong>Ana Nhantumbo</strong><small>ana@email.com</small></div></td><td>Aniversário</td><td>27 Ago 2026</td><td>MZN 72.000</td><td><span class="status preparation">Em análise</span></td><td><button aria-label="Mais opções"><i class="bx bx-dots-horizontal-rounded"></i></button></td></tr>
-          </tbody></table></div></article>
-          <article class="panel occupancy-panel"><div class="panel-heading"><div><h2>Ocupação por espaço</h2><p>Durante o mês atual</p></div></div><div id="event-types-chart" class="donut-chart"></div><div class="occupancy-list"><span><i style="background:#153e63"></i>Salão Nobre <b>42%</b></span><span><i style="background:#111"></i>Auditório <b>28%</b></span><span><i style="background:#6d8eac"></i>Jardim <b>20%</b></span><span><i style="background:#ddd"></i>Terraço <b>10%</b></span></div></article>
+        <section class="panel-grid panel-grid--wide">
+          <article class="card">
+            <div class="panel__head">
+              <div>
+                <h2>Reservas recentes</h2>
+                <p>Últimas solicitações recebidas</p>
+              </div>
+              <a class="link-arrow" href="#">Ver todas <i class="bx bx-right-arrow-alt"></i></a>
+            </div>
+
+            <div class="table-scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>Tipo de evento</th>
+                    <th>Data</th>
+                    <th>Valor</th>
+                    <th>Estado</th>
+                    <th><span class="visually-hidden">Acções</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="client">
+                        <span class="avatar">LC</span>
+                        <div>
+                          <strong>Luísa Costa</strong>
+                          <small>luisa@email.com</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Casamento</td>
+                    <td>14 Ago 2026</td>
+                    <td>MZN 185.000</td>
+                    <td><span class="badge badge--ok">Confirmada</span></td>
+                    <td><button type="button" aria-label="Mais opções"><i class="bx bx-dots-horizontal-rounded"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="client">
+                        <span class="avatar">JM</span>
+                        <div>
+                          <strong>João Mabunda</strong>
+                          <small>joao@email.com</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Corporativo</td>
+                    <td>21 Ago 2026</td>
+                    <td>MZN 96.500</td>
+                    <td><span class="badge badge--info">Pendente</span></td>
+                    <td><button type="button" aria-label="Mais opções"><i class="bx bx-dots-horizontal-rounded"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="client">
+                        <span class="avatar">AN</span>
+                        <div>
+                          <strong>Ana Nhantumbo</strong>
+                          <small>ana@email.com</small>
+                        </div>
+                      </div>
+                    </td>
+                    <td>Aniversário</td>
+                    <td>27 Ago 2026</td>
+                    <td>MZN 72.000</td>
+                    <td><span class="badge badge--warn">Em análise</span></td>
+                    <td><button type="button" aria-label="Mais opções"><i class="bx bx-dots-horizontal-rounded"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="card occupancy">
+            <div class="panel__head">
+              <div>
+                <h2>Ocupação por espaço</h2>
+                <p>Durante o mês atual</p>
+              </div>
+            </div>
+            <div class="chart chart--donut" id="occupancyChart" aria-label="Ocupação por espaço"></div>
+            <ul>
+              <li><i style="background:#0b3049"></i>Salão Nobre <b>42%</b></li>
+              <li><i style="background:#f47a20"></i>Auditório <b>28%</b></li>
+              <li><i style="background:#1d5578"></i>Jardim <b>20%</b></li>
+              <li><i style="background:#dbe5ea"></i>Terraço <b>10%</b></li>
+            </ul>
+          </article>
         </section>
       </main>
     </div>
   </div>
-  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <div class="backdrop" id="backdrop"></div>
+  <script src="../assets/js/app-shell.js"></script>
   <script src="../assets/js/vendor.js"></script>
   <script src="../assets/js/pages/dashboard.js"></script>
 </body>

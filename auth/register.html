@@ -1,78 +1,94 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
 <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Register | Salao de Eventos</title>
-     <meta name="robots" content="noindex">
-     <link rel="shortcut icon" href="../assets/images/favicon.ico">
-     <link href="../assets/css/vendor.min.css" rel="stylesheet" type="text/css">
-     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css">
-     <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css">
-     <link href="../assets/css/site.css" rel="stylesheet" type="text/css">
-     <script src="../assets/js/config.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Criar conta | Espaço ON</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#06253c">
+  <link rel="shortcut icon" href="../assets/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/icons.min.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/auth.css" rel="stylesheet">
 </head>
+<body>
+  <div class="auth">
+    <aside class="auth__aside">
+      <a href="../telas/Tela principal.html">
+        <img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="158" height="51">
+      </a>
 
-<body class="authentication-bg">
-     <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
-          <div class="container">
-               <div class="row justify-content-center">
-                    <div class="col-xl-5 col-lg-6">
-                         <div class="card auth-card">
-                              <div class="card-body px-3 py-5">
-                                   <div class="mx-auto mb-4 text-center auth-logo">
-                                        <a href="../telas/Tela principal.html" class="logo-dark">
-                                             <img src="../assets/images/logo-sm.png" height="30" class="me-1" alt="Logo">
-                                             <img src="../assets/images/logo-dark.png" height="24" alt="Salao de Eventos">
-                                        </a>
-                                        <a href="../telas/Tela principal.html" class="logo-light">
-                                             <img src="../assets/images/logo-sm.png" height="30" class="me-1" alt="Logo">
-                                             <img src="../assets/images/logo-light.png" height="24" alt="Salao de Eventos">
-                                        </a>
-                                   </div>
+      <div class="auth__pitch">
+        <h2>Guarde os espaços que gostou.</h2>
+        <p>Crie uma conta para comparar salões, agendar visitas e acompanhar as suas propostas.</p>
+        <ul>
+          <li><i class="bx bx-check"></i> Favoritos guardados entre dispositivos</li>
+          <li><i class="bx bx-check"></i> Histórico de visitas e propostas</li>
+          <li><i class="bx bx-check"></i> Notificações sobre disponibilidade</li>
+        </ul>
+      </div>
 
-                                   <h2 class="fw-bold text-center fs-18">Criar conta</h2>
-                                   <p class="text-muted text-center mt-1 mb-4">Registe um novo utilizador para o painel.</p>
+      <div class="auth__quote">
+        <p>“Comparámos três salões sem fazer várias deslocações pela cidade.”</p>
+        <small>Luísa Costa · Casamento, Maputo</small>
+      </div>
+    </aside>
 
-                                   <div class="px-4">
-                                        <form action="../telas/Tela principal.html" class="authentication-form needs-validation" novalidate>
-                                             <div class="mb-3">
-                                                  <label class="form-label" for="name">Nome</label>
-                                                  <input type="text" id="name" name="name" class="form-control" placeholder="Nome completo" required>
-                                                  <div class="invalid-feedback">Informe o nome.</div>
-                                             </div>
-                                             <div class="mb-3">
-                                                  <label class="form-label" for="email">Email</label>
-                                                  <input type="email" id="email" name="email" class="form-control" placeholder="nome@exemplo.com" required>
-                                                  <div class="invalid-feedback">Informe um email valido.</div>
-                                             </div>
-                                             <div class="mb-3">
-                                                  <label class="form-label" for="password">Senha</label>
-                                                  <input type="password" id="password" name="password" class="form-control" placeholder="Crie uma senha" required>
-                                                  <div class="invalid-feedback">Informe a senha.</div>
-                                             </div>
-                                             <div class="mb-3">
-                                                  <div class="form-check">
-                                                       <input type="checkbox" class="form-check-input" id="terms" required>
-                                                       <label class="form-check-label" for="terms">Confirmo os dados do utilizador</label>
-                                                       <div class="invalid-feedback">Confirme antes de continuar.</div>
-                                                  </div>
-                                             </div>
-                                             <div class="mb-1 text-center d-grid">
-                                                  <button class="btn btn-primary" type="submit">Criar conta</button>
-                                             </div>
-                                        </form>
-                                   </div>
-                              </div>
-                         </div>
+    <main class="auth__panel">
+      <div class="auth__form">
+        <a class="brand" href="../telas/Tela principal.html">
+          <img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="150" height="49">
+        </a>
 
-                         <p class="mb-0 text-center">Ja tem conta? <a href="login.html" class="text-reset fw-bold ms-1">Entrar</a></p>
-                    </div>
-               </div>
+        <h1>Criar conta</h1>
+        <p>Leva menos de um minuto e não precisa de cartão.</p>
+
+        <form action="../telas/Tela principal.html" method="get">
+          <label class="field">
+            <span>Nome completo</span>
+            <input type="text" name="name" placeholder="Nome completo" autocomplete="name" required>
+          </label>
+
+          <label class="field">
+            <span>E-mail</span>
+            <input type="email" name="email" placeholder="nome@exemplo.com" autocomplete="email" required>
+          </label>
+
+          <label class="field">
+            <span>Telefone</span>
+            <input type="tel" name="phone" placeholder="+258 8X XXX XXXX" autocomplete="tel" required>
+          </label>
+
+          <div class="field password-field">
+            <div class="field__label-row">
+              <label for="password"><span>Senha</span></label>
+              <span class="hint">Mínimo 8 caracteres</span>
+            </div>
+            <input id="password" type="password" name="password" placeholder="Crie uma senha" autocomplete="new-password" minlength="8" required>
+            <button type="button" data-toggle-password="password" aria-label="Mostrar senha">
+              <i class="bx bx-show"></i>
+            </button>
           </div>
-     </div>
 
-     <script src="../assets/js/vendor.js"></script>
-     <script src="../assets/js/app.js"></script>
+          <label class="checkbox">
+            <input type="checkbox" name="terms" required>
+            <span>Aceito os termos de utilização e a política de privacidade.</span>
+          </label>
+
+          <button class="btn btn--primary btn--block" type="submit">Criar conta</button>
+        </form>
+
+        <div class="auth__divider">ou</div>
+        <p class="auth__alt">Já tem conta? <a href="login.html">Entrar</a></p>
+
+        <a class="auth__back" href="../telas/Tela principal.html"><i class="bx bx-left-arrow-alt"></i> Voltar ao site</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/auth.js"></script>
 </body>
 </html>

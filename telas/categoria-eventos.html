@@ -1,20 +1,122 @@
 <!doctype html>
 <html lang="pt">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Categoria de eventos — Espaço ON</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Categorias de eventos | Espaço ON</title>
+  <meta name="description" content="Espaços para eventos sociais e corporativos em Maputo.">
+  <meta name="theme-color" content="#06253c">
   <link rel="shortcut icon" href="../assets/images/favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="../assets/css/icons.min.css" rel="stylesheet"><link href="../assets/css/site.css" rel="stylesheet"><link href="../assets/css/portal.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/icons.min.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/portal.css" rel="stylesheet">
 </head>
-<body class="portal-body category-detail-page">
-  <header class="portal-header"><a class="portal-brand" href="Tela principal.html"><img src="../assets/images/espacon-logo.png" alt="Espaço ON"></a><button class="portal-menu" id="portalMenu" aria-label="Abrir menu" aria-expanded="false"><i class="bx bx-menu"></i></button><nav class="portal-nav" id="portalNav"><a href="Tela principal.html">Início</a><a class="active" href="Tela principal.html#espacos">Explorar espaços</a><a href="contactos.html">Contactos</a></nav><div class="portal-account"><a class="login-link" href="../auth/login.html">Entrar</a><a class="signup-button" href="../auth/register.html">Criar conta</a></div></header>
+<body class="portal">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="Tela principal.html"><img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="148" height="48"></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="siteNav">
+        <i class="bx bx-menu"></i>
+      </button>
+      <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
+        <a href="Tela principal.html">Início</a>
+        <a href="Tela principal.html#espacos" aria-current="page">Explorar espaços</a>
+        <a href="Tela principal.html#como-funciona">Como funciona</a>
+        <a href="contactos.html">Contactos</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn--outline" href="../auth/login.html">Entrar</a>
+        <a class="btn btn--navy" href="../auth/register.html">Criar conta</a>
+      </div>
+    </div>
+  </header>
+
   <main>
-    <section class="category-detail-hero"><div><a href="Tela principal.html"><i class="bx bx-left-arrow-alt"></i> Voltar aos tipos de eventos</a><span id="categoryEyebrow"></span><h1 id="categoryTitleDetail"></h1><p id="categoryDescription"></p><div id="categoryTags" class="category-tags"></div><div class="category-hero-benefits" id="categoryHeroBenefits"></div></div></section>
-    <section class="category-guide"><div><span>Como escolher</span><h2>O que deve considerar</h2><p id="categoryGuidance"></p></div><ul id="categoryChecklist"></ul></section>
-    <section class="portal-section category-venues"><div class="section-heading heading-row"><div><span>Espaços desta categoria</span><h2 id="venueSectionTitle"></h2><p>Compare capacidade, localização e preço inicial antes de escolher.</p></div><b id="venueCount"></b></div><div class="category-venue-grid" id="categoryVenueGrid"></div></section>
+    <section class="category-hero" id="categoryHero">
+      <div class="wrap">
+        <div>
+          <a class="back-link" href="Tela principal.html"><i class="bx bx-left-arrow-alt"></i> Voltar aos tipos de eventos</a>
+          <span class="eyebrow" id="categoryEyebrow"></span>
+          <h1 id="categoryTitle"></h1>
+          <p id="categoryDescription"></p>
+          <div class="chips" id="categoryTags"></div>
+          <div class="chips" id="categoryBenefits"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="guide">
+        <div>
+          <span class="eyebrow">Como escolher</span>
+          <h2>O que deve considerar</h2>
+          <p id="categoryGuidance"></p>
+        </div>
+        <ul id="categoryChecklist"></ul>
+      </section>
+    </div>
+
+    <section class="section wrap">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="eyebrow">Espaços desta categoria</span>
+          <h2 id="venueSectionTitle"></h2>
+          <p>Compare capacidade, localização e preço inicial antes de escolher.</p>
+        </div>
+        <span class="count-pill" id="venueCount"></span>
+      </div>
+
+      <div class="venue-grid" id="categoryVenueGrid"></div>
+    </section>
   </main>
-  <footer class="portal-footer"><img src="../assets/images/espacon-logo.png" alt="Espaço ON"><p>Encontre o espaço certo. Crie memórias que ficam.</p><div><a href="Tela principal.html">Início</a><a href="contactos.html">Contactos</a></div><small>© 2026 Espaço ON · Maputo, Moçambique</small></footer>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__top">
+      <div class="site-footer__brand">
+        <img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="150" height="49">
+        <p>Encontre o espaço certo. Crie memórias que ficam.</p>
+      </div>
+
+      <div>
+        <h2>Navegar</h2>
+        <ul>
+          <li><a href="Tela principal.html">Início</a></li>
+          <li><a href="Tela principal.html#espacos">Espaços</a></li>
+          <li><a href="Tela principal.html#como-funciona">Como funciona</a></li>
+          <li><a href="contactos.html">Contactos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Categorias</h2>
+        <ul>
+          <li><a href="categoria-eventos.html?tipo=social">Eventos sociais</a></li>
+          <li><a href="categoria-eventos.html?tipo=corporativo">Eventos corporativos</a></li>
+          <li><a href="../auth/login.html">Entrar</a></li>
+          <li><a href="../auth/register.html">Criar conta</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Contactos</h2>
+        <ul>
+          <li><i class="bx bxs-phone"></i> +258 84 000 0000</li>
+          <li><i class="bx bxs-envelope"></i> contacto@espacoon.co.mz</li>
+          <li><i class="bx bxs-map"></i> Av. Julius Nyerere, 1234</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="wrap site-footer__bottom">
+      <span>© 2026 Espaço ON · Maputo, Moçambique</span>
+      <span>Protótipo de demonstração</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/portal.js"></script>
   <script src="../assets/js/categoria-eventos.js"></script>
-</body></html>
+</body>
+</html>
