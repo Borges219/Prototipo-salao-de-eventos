@@ -1,72 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
 <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Login | Salao de Eventos</title>
-     <meta name="robots" content="noindex">
-     <link rel="shortcut icon" href="../assets/images/favicon.ico">
-     <link href="../assets/css/vendor.min.css" rel="stylesheet" type="text/css">
-     <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css">
-     <link href="../assets/css/app.min.css" rel="stylesheet" type="text/css">
-     <link href="../assets/css/site.css" rel="stylesheet" type="text/css">
-     <script src="../assets/js/config.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Entrar | Espaço ON</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#06253c">
+  <link rel="shortcut icon" href="../assets/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/icons.min.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/auth.css" rel="stylesheet">
 </head>
+<body>
+  <div class="auth">
+    <aside class="auth__aside">
+      <a href="../telas/Tela principal.html">
+        <img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="158" height="51">
+      </a>
 
-<body class="authentication-bg">
-     <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5">
-          <div class="container">
-               <div class="row justify-content-center">
-                    <div class="col-xl-5 col-lg-6">
-                         <div class="card auth-card">
-                              <div class="card-body px-3 py-5">
-                                   <div class="mx-auto mb-4 text-center auth-logo">
-                                        <a href="../telas/Tela principal.html" class="logo-dark">
-                                             <img src="../assets/images/logo-sm.png" height="30" class="me-1" alt="Logo">
-                                             <img src="../assets/images/logo-dark.png" height="24" alt="Salao de Eventos">
-                                        </a>
-                                        <a href="../telas/Tela principal.html" class="logo-light">
-                                             <img src="../assets/images/logo-sm.png" height="30" class="me-1" alt="Logo">
-                                             <img src="../assets/images/logo-light.png" height="24" alt="Salao de Eventos">
-                                        </a>
-                                   </div>
+      <div class="auth__pitch">
+        <h2>Cada evento começa com o espaço certo.</h2>
+        <p>Entre para acompanhar visitas, propostas e reservas num só lugar.</p>
+        <ul>
+          <li><i class="bx bx-check"></i> Pedidos de visita organizados por salão</li>
+          <li><i class="bx bx-check"></i> Propostas e contratos sempre acessíveis</li>
+          <li><i class="bx bx-check"></i> Agenda partilhada com a sua equipa</li>
+        </ul>
+      </div>
 
-                                   <h2 class="fw-bold text-center fs-18">Entrar</h2>
-                                   <p class="text-muted text-center mt-1 mb-4">Acesse o painel administrativo do salao de eventos.</p>
+      <div class="auth__quote">
+        <p>“Encontrámos o auditório certo em dois dias, sem sair do escritório.”</p>
+        <small>João Mabunda · Evento corporativo, Matola</small>
+      </div>
+    </aside>
 
-                                   <div class="px-4">
-                                        <form action="../telas/Tela principal.html" class="authentication-form needs-validation" novalidate>
-                                             <div class="mb-3">
-                                                  <label class="form-label" for="email">Email</label>
-                                                  <input type="email" id="email" name="email" class="form-control" placeholder="nome@exemplo.com" required>
-                                                  <div class="invalid-feedback">Informe um email valido.</div>
-                                             </div>
-                                             <div class="mb-3">
-                                                  <label class="form-label" for="password">Senha</label>
-                                                  <input type="password" id="password" name="password" class="form-control" placeholder="Digite a senha" required>
-                                                  <div class="invalid-feedback">Informe a senha.</div>
-                                             </div>
-                                             <div class="mb-3">
-                                                  <div class="form-check">
-                                                       <input type="checkbox" class="form-check-input" id="remember">
-                                                       <label class="form-check-label" for="remember">Manter sessao iniciada</label>
-                                                  </div>
-                                             </div>
-                                             <div class="mb-1 text-center d-grid">
-                                                  <button class="btn btn-primary" type="submit">Entrar</button>
-                                             </div>
-                                        </form>
-                                   </div>
-                              </div>
-                         </div>
+    <main class="auth__panel">
+      <div class="auth__form">
+        <a class="brand" href="../telas/Tela principal.html">
+          <img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="150" height="49">
+        </a>
 
-                         <p class="mb-0 text-center">Novo utilizador? <a href="register.html" class="text-reset fw-bold ms-1">Criar conta</a></p>
-                    </div>
-               </div>
+        <h1>Entrar</h1>
+        <p>Aceda ao painel para gerir os seus espaços e reservas.</p>
+
+        <form action="../telas/dashboard-administrativo.html" method="get">
+          <label class="field">
+            <span>E-mail</span>
+            <input type="email" name="email" placeholder="nome@exemplo.com" autocomplete="email" required>
+          </label>
+
+          <div class="field password-field">
+            <div class="field__label-row">
+              <label for="password"><span>Senha</span></label>
+              <a href="#">Esqueceu a senha?</a>
+            </div>
+            <input id="password" type="password" name="password" placeholder="Digite a senha" autocomplete="current-password" required>
+            <button type="button" data-toggle-password="password" aria-label="Mostrar senha">
+              <i class="bx bx-show"></i>
+            </button>
           </div>
-     </div>
 
-     <script src="../assets/js/vendor.js"></script>
-     <script src="../assets/js/app.js"></script>
+          <label class="checkbox">
+            <input type="checkbox" name="remember">
+            <span>Manter sessão iniciada neste dispositivo</span>
+          </label>
+
+          <button class="btn btn--primary btn--block" type="submit">Entrar</button>
+        </form>
+
+        <div class="auth__divider">ou</div>
+        <p class="auth__alt">Novo utilizador? <a href="register.html">Criar conta</a></p>
+
+        <a class="auth__back" href="../telas/Tela principal.html"><i class="bx bx-left-arrow-alt"></i> Voltar ao site</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="../assets/js/auth.js"></script>
 </body>
 </html>

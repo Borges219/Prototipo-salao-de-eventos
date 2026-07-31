@@ -1,12 +1,91 @@
-document.addEventListener("DOMContentLoaded",function(){
-  var sidebar=document.getElementById("sidebar"),toggle=document.getElementById("menuToggle"),backdrop=document.getElementById("sidebarBackdrop");
-  function closeMenu(){if(!sidebar)return;sidebar.classList.remove("open");backdrop.classList.remove("show");toggle.setAttribute("aria-expanded","false")}
-  if(toggle)toggle.addEventListener("click",function(){var open=sidebar.classList.toggle("open");backdrop.classList.toggle("show",open);toggle.setAttribute("aria-expanded",String(open))});
-  if(backdrop)backdrop.addEventListener("click",closeMenu);
-  document.querySelectorAll(".sidebar-nav a").forEach(function(link){link.addEventListener("click",function(){if(window.innerWidth<900)closeMenu()})});
-  if(!window.ApexCharts)return;
-  var revenue=document.querySelector("#events-revenue-chart");
-  if(revenue)new ApexCharts(revenue,{chart:{height:255,type:"area",toolbar:{show:false},fontFamily:'Inter, "Segoe UI", sans-serif'},series:[{name:"Receita",data:[620,710,680,830,790,920,890,1010,1080,1170,1130,1250]},{name:"Despesas",data:[380,420,390,480,450,510,490,560,590,610,580,640]}],colors:["#153e63","#111111"],dataLabels:{enabled:false},stroke:{curve:"smooth",width:2.2},fill:{type:"gradient",gradient:{opacityFrom:.2,opacityTo:.01,stops:[0,95]}},grid:{borderColor:"#e7e7e7",strokeDashArray:4},xaxis:{categories:["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"],axisBorder:{show:false},axisTicks:{show:false},labels:{style:{colors:"#888888",fontSize:"9px"}}},yaxis:{labels:{formatter:function(v){return v>=1000?(v/1000).toFixed(1)+"M":v+"k"},style:{colors:"#888888",fontSize:"9px"}}},legend:{show:false},tooltip:{shared:true,y:{formatter:function(v){return "MZN "+v+".000"}}}}).render();
-  var occupancy=document.querySelector("#event-types-chart");
-  if(occupancy)new ApexCharts(occupancy,{chart:{height:165,type:"donut"},series:[42,28,20,10],labels:["Salão Nobre","Auditório","Jardim","Terraço"],colors:["#153e63","#111111","#6d8eac","#dddddd"],legend:{show:false},dataLabels:{enabled:false},stroke:{width:2,colors:["#fff"]},plotOptions:{pie:{donut:{size:"72%",labels:{show:true,name:{show:true,fontSize:"9px",color:"#777777",offsetY:14},value:{show:true,fontFamily:"Georgia, serif",fontSize:"22px",fontWeight:600,color:"#111111",offsetY:-10,formatter:function(){return "78%"}},total:{show:true,label:"Ocupação",formatter:function(){return "78%"}}}}}}}).render();
+/* Gráficos do painel administrativo (ApexCharts vem do vendor.js). */
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (!window.ApexCharts) return;
+
+  var navy = '#0b3049';
+  var orange = '#f47a20';
+  var axisStyle = { colors: '#7b909f', fontSize: '11px' };
+
+  var revenue = document.getElementById('revenueChart');
+  if (revenue) {
+    new ApexCharts(revenue, {
+      chart: {
+        type: 'area',
+        height: 270,
+        toolbar: { show: false },
+        fontFamily: 'Inter, "Segoe UI", sans-serif'
+      },
+      series: [
+        { name: 'Receita', data: [620, 710, 680, 830, 790, 920, 890, 1010, 1080, 1170, 1130, 1250] },
+        { name: 'Despesas', data: [380, 420, 390, 480, 450, 510, 490, 560, 590, 610, 580, 640] }
+      ],
+      colors: [navy, orange],
+      dataLabels: { enabled: false },
+      stroke: { curve: 'smooth', width: 2.5 },
+      fill: { type: 'solid', opacity: 0.08 },
+      grid: { borderColor: '#eff4f7', strokeDashArray: 4, padding: { left: 4, right: 4 } },
+      xaxis: {
+        categories: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        axisBorder: { show: false },
+        axisTicks: { show: false },
+        labels: { style: axisStyle }
+      },
+      yaxis: {
+        labels: {
+          style: axisStyle,
+          formatter: function (value) {
+            return value >= 1000 ? (value / 1000).toFixed(1) + 'M' : value + 'k';
+          }
+        }
+      },
+      legend: { show: false },
+      tooltip: {
+        shared: true,
+        y: {
+          formatter: function (value) {
+            return 'MZN ' + value + '.000';
+          }
+        }
+      }
+    }).render();
+  }
+
+  var occupancy = document.getElementById('occupancyChart');
+  if (occupancy) {
+    new ApexCharts(occupancy, {
+      chart: { type: 'donut', height: 175, fontFamily: 'Inter, "Segoe UI", sans-serif' },
+      series: [42, 28, 20, 10],
+      labels: ['Salão Nobre', 'Auditório', 'Jardim', 'Terraço'],
+      colors: [navy, orange, '#1d5578', '#dbe5ea'],
+      legend: { show: false },
+      dataLabels: { enabled: false },
+      stroke: { width: 2, colors: ['#fff'] },
+      plotOptions: {
+        pie: {
+          donut: {
+            size: '72%',
+            labels: {
+              show: true,
+              name: { fontSize: '11px', color: '#7b909f', offsetY: 14 },
+              value: {
+                fontFamily: '"Plus Jakarta Sans", sans-serif',
+                fontSize: '24px',
+                fontWeight: 700,
+                color: '#0d2334',
+                offsetY: -10
+              },
+              total: {
+                show: true,
+                label: 'Ocupação',
+                formatter: function () {
+                  return '78%';
+                }
+              }
+            }
+          }
+        }
+      }
+    }).render();
+  }
 });

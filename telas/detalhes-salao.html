@@ -1,7 +1,179 @@
-<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Detalhes do salão — Espaço ON</title><link rel="shortcut icon" href="../assets/images/favicon.ico"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link href="../assets/css/icons.min.css" rel="stylesheet"><link href="../assets/css/site.css" rel="stylesheet"><link href="../assets/css/portal.css" rel="stylesheet"></head>
-<body class="portal-body venue-detail-page"><header class="portal-header"><a class="portal-brand" href="Tela principal.html"><img src="../assets/images/espacon-logo.png" alt="Espaço ON"></a><button class="portal-menu" id="portalMenu" aria-label="Abrir menu" aria-expanded="false"><i class="bx bx-menu"></i></button><nav class="portal-nav" id="portalNav"><a href="Tela principal.html">Início</a><a class="active" href="Tela principal.html#espacos">Explorar espaços</a><a href="contactos.html">Contactos</a></nav><div class="portal-account"><a class="login-link" href="../auth/login.html">Entrar</a><a class="signup-button" href="../auth/register.html">Criar conta</a></div></header>
-<main><section class="venue-detail-heading"><div><a href="Tela principal.html#espacos"><i class="bx bx-left-arrow-alt"></i> Voltar aos espaços</a><div class="venue-title-row"><div><span id="venueType"></span><h1 id="venueName"></h1><p><i class="bx bx-map"></i> <span id="venueLocation"></span></p></div><div class="venue-rating"><i class="bx bxs-star"></i><strong id="venueRating"></strong><small id="venueReviews"></small></div></div></div></section>
-<section class="venue-gallery" id="venueGallery"><button class="gallery-main" data-gallery-index="0"><span>Vista principal</span></button><button data-gallery-index="1"><span>Interior decorado</span></button><button data-gallery-index="2"><span>Interior sem decoração</span></button><button data-gallery-index="3"><span>Vista frontal</span></button><button data-gallery-index="4"><span>Área lateral</span></button></section>
-<section class="venue-detail-layout"><div class="venue-information"><section><span>Sobre o espaço</span><h2 id="venueAboutTitle"></h2><p id="venueDescription"></p><div class="venue-facts"><div><i class="bx bx-ruler"></i><small>Dimensão</small><strong id="venueDimension"></strong></div><div><i class="bx bx-group"></i><small>Capacidade</small><strong id="venueCapacity"></strong></div><div><i class="bx bx-wallet"></i><small>Preço inicial</small><strong id="venuePrice"></strong></div><div><i class="bx bx-car"></i><small>Estacionamento</small><strong id="venueParking"></strong></div></div></section><section class="venue-services"><h2>Serviços e comodidades</h2><p>Alguns serviços são opcionais e podem alterar o valor final da proposta.</p><div id="venueServices"></div></section><section class="venue-pricing"><h2>Referência de preços</h2><div><span>Aluguer do espaço</span><strong id="basePrice"></strong></div><div><span>Decoração personalizada <em>Opcional</em></span><strong>Sob consulta</strong></div><div><span>Catering por pessoa <em>Opcional</em></span><strong>Desde 1.250 MZN</strong></div><small>O preço final depende da data, duração, número de convidados e serviços escolhidos.</small></section></div>
-<aside class="visit-booking"><span>Conheça antes de reservar</span><h2>Agendar uma visita</h2><p>Escolha uma data e horário disponíveis para visitar o espaço.</p><form id="visitForm"><label>Nome completo<input id="visitName" type="text" placeholder="Como devemos tratar-lhe?" required></label><label>Telefone<input id="visitPhone" type="tel" placeholder="+258 84 000 0000" required></label><label>E-mail<input id="visitEmail" type="email" placeholder="nome@email.com" required></label><label>Data da visita<input id="visitDate" type="date" required></label><label>Horário<select id="visitTime" required><option value="">Seleccione</option><option>09:00</option><option>11:00</option><option>14:00</option><option>16:00</option></select></label><label>Número de visitantes<input id="visitGuests" type="number" min="1" max="10" value="2" required></label><label>Observações<textarea id="visitNotes" rows="3" placeholder="Alguma preferência ou questão?"></textarea></label><button type="submit"><i class="bx bx-calendar-check"></i> Solicitar visita</button><small><i class="bx bx-info-circle"></i> Não precisa de criar conta. A instituição confirmará ou proporá outro horário.</small></form></aside></section></main>
-<div class="gallery-lightbox" id="galleryLightbox" hidden><button id="closeGallery" aria-label="Fechar"><i class="bx bx-x"></i></button><img id="galleryImage" alt="Vista ampliada do salão"><p id="galleryCaption"></p></div><div class="portal-toast" id="detailToast" role="status"></div><script src="../assets/js/detalhes-salao.js"></script></body></html>
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalhes do salão | Espaço ON</title>
+  <meta name="description" content="Fotografias, serviços, preços de referência e agendamento de visita.">
+  <meta name="theme-color" content="#06253c">
+  <link rel="shortcut icon" href="../assets/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/icons.min.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/portal.css" rel="stylesheet">
+</head>
+<body class="portal">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="Tela principal.html"><img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="148" height="48"></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="siteNav">
+        <i class="bx bx-menu"></i>
+      </button>
+      <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
+        <a href="Tela principal.html">Início</a>
+        <a href="Tela principal.html#espacos" aria-current="page">Explorar espaços</a>
+        <a href="Tela principal.html#como-funciona">Como funciona</a>
+        <a href="contactos.html">Contactos</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn--outline" href="../auth/login.html">Entrar</a>
+        <a class="btn btn--navy" href="../auth/register.html">Criar conta</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="venue-head wrap">
+      <a class="back-link" href="Tela principal.html#espacos"><i class="bx bx-left-arrow-alt"></i> Voltar aos espaços</a>
+      <div class="venue-head__row">
+        <div>
+          <span class="eyebrow" id="venueType"></span>
+          <h1 id="venueName"></h1>
+          <p><i class="bx bx-map"></i> <span id="venueLocation"></span></p>
+        </div>
+        <div class="rating-box">
+          <i class="bx bxs-star"></i>
+          <strong id="venueRating"></strong>
+          <small id="venueReviews"></small>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <section class="gallery" id="gallery" aria-label="Fotografias do espaço">
+        <button type="button" data-index="0"><span>Vista principal</span></button>
+        <button type="button" data-index="1"><span>Interior decorado</span></button>
+        <button type="button" data-index="2"><span>Interior sem decoração</span></button>
+        <button type="button" data-index="3"><span>Vista frontal</span></button>
+        <button type="button" data-index="4"><span>Área lateral</span></button>
+      </section>
+    </div>
+
+    <div class="wrap detail-grid">
+      <div>
+        <section>
+          <span class="eyebrow">Sobre o espaço</span>
+          <h2 id="venueAboutTitle"></h2>
+          <p id="venueDescription"></p>
+
+          <div class="facts">
+            <div>
+              <i class="bx bx-ruler"></i>
+              <small>Dimensão</small>
+              <strong id="venueDimension"></strong>
+            </div>
+            <div>
+              <i class="bx bx-group"></i>
+              <small>Capacidade</small>
+              <strong id="venueCapacity"></strong>
+            </div>
+            <div>
+              <i class="bx bx-wallet"></i>
+              <small>Preço inicial</small>
+              <strong id="venuePrice"></strong>
+            </div>
+            <div>
+              <i class="bx bx-car"></i>
+              <small>Estacionamento</small>
+              <strong id="venueParking"></strong>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>Serviços e comodidades</h2>
+          <p>Alguns serviços são opcionais e podem alterar o valor final da proposta.</p>
+          <div class="services" id="venueServices"></div>
+        </section>
+
+        <section>
+          <h2>Referência de preços</h2>
+          <div class="pricing-row">
+            <span>Aluguer do espaço</span>
+            <strong id="basePrice"></strong>
+          </div>
+          <div class="pricing-row">
+            <span>Decoração personalizada <em>Opcional</em></span>
+            <strong>Sob consulta</strong>
+          </div>
+          <div class="pricing-row">
+            <span>Catering por pessoa <em>Opcional</em></span>
+            <strong>Desde 1.250 MZN</strong>
+          </div>
+          <p class="pricing-note">O preço final depende da data, duração, número de convidados e serviços escolhidos.</p>
+        </section>
+      </div>
+
+      <aside class="booking-card">
+        <span class="eyebrow">Conheça antes de reservar</span>
+        <h2>Agendar uma visita</h2>
+        <p>Escolha uma data e horário disponíveis para visitar o espaço.</p>
+
+        <form id="visitForm" novalidate>
+          <label class="field">
+            <span>Nome completo</span>
+            <input id="visitName" type="text" placeholder="Como devemos tratar-lhe?" autocomplete="name" required>
+          </label>
+          <label class="field">
+            <span>Telefone</span>
+            <input id="visitPhone" type="tel" placeholder="+258 84 000 0000" autocomplete="tel" required>
+          </label>
+          <label class="field">
+            <span>E-mail</span>
+            <input id="visitEmail" type="email" placeholder="nome@email.com" autocomplete="email" required>
+          </label>
+          <div class="field-row">
+            <label class="field">
+              <span>Data da visita</span>
+              <input id="visitDate" type="date" required>
+            </label>
+            <label class="field">
+              <span>Horário</span>
+              <select id="visitTime" required>
+                <option value="">Seleccione</option>
+                <option>09:00</option>
+                <option>11:00</option>
+                <option>14:00</option>
+                <option>16:00</option>
+              </select>
+            </label>
+          </div>
+          <label class="field">
+            <span>Número de visitantes</span>
+            <input id="visitGuests" type="number" min="1" max="10" value="2" required>
+          </label>
+          <label class="field">
+            <span>Observações</span>
+            <textarea id="visitNotes" rows="3" placeholder="Alguma preferência ou questão?"></textarea>
+          </label>
+
+          <button class="btn btn--primary btn--block" type="submit"><i class="bx bx-calendar-check"></i> Solicitar visita</button>
+          <small><i class="bx bx-info-circle"></i> Não precisa de criar conta. A instituição confirmará ou proporá outro horário.</small>
+        </form>
+      </aside>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" id="closeLightbox" aria-label="Fechar"><i class="bx bx-x"></i></button>
+    <img id="lightboxImage" alt="Vista ampliada do salão">
+    <p id="lightboxCaption"></p>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="../assets/js/portal.js"></script>
+  <script src="../assets/js/detalhes-salao.js"></script>
+</body>
+</html>
