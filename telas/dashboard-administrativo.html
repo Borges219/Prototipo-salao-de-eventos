@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Painel administrativo | Espaço ON</title>
-  <meta name="description" content="Painel administrativo do Espaço ON.">
+  <title>Painel do proprietário | Espaço ON</title>
+  <meta name="description" content="Gestão de salões, visitas e reservas do proprietário.">
   <meta name="theme-color" content="#ffffff">
   <link rel="shortcut icon" href="../assets/images/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link href="../assets/css/icons.min.css" rel="stylesheet">
   <link href="../assets/css/base.css" rel="stylesheet">
-  <link href="../assets/css/dashboard.css" rel="stylesheet">
+  <link href="../assets/css/dashboard.css?v=20260805-agenda-availability" rel="stylesheet">
 </head>
 <body class="app">
   <div class="app-shell">
@@ -21,28 +21,25 @@
         <img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="170" height="55">
       </a>
 
-      <nav aria-label="Navegação do painel">
-        <p class="nav-caption">Principal</p>
-        <a href="dashboard-administrativo.html" aria-current="page"><i class="bx bx-grid-alt"></i><span>Visão geral</span></a>
-        <a href="dashboard-proprietario-visitas.html"><i class="bx bx-calendar"></i><span>Solicitações de visitas</span><b>3</b></a>
-        <a href="#"><i class="bx bx-bookmark"></i><span>Reservas</span></a>
-        <a href="#"><i class="bx bx-building-house"></i><span>Espaços</span></a>
+      <nav aria-label="Navegação do proprietário">
+        <p class="nav-caption">Meu espaço</p>
+        <a href="#visao-geral" data-owner-view="overview" aria-current="page"><i class="bx bx-grid-alt"></i><span>Visão geral</span></a>
+        <a href="dashboard-proprietario-visitas.html"><i class="bx bx-calendar"></i><span>Solicitações</span><b id="ownerPendingCount">0</b></a>
+        <a href="#agenda" data-owner-view="agenda"><i class="bx bx-calendar-event"></i><span>Agenda</span></a>
+        <a href="#reservas" data-owner-view="reservations"><i class="bx bx-bookmark"></i><span>Reservas</span></a>
+        <a href="#meus-saloes" data-owner-view="venues"><i class="bx bx-building-house"></i><span>Meus salões</span></a>
 
-        <p class="nav-caption">Gestão</p>
-        <a href="#"><i class="bx bx-user"></i><span>Clientes</span></a>
-        <a href="#"><i class="bx bx-wallet"></i><span>Financeiro</span></a>
-        <a href="#"><i class="bx bx-bar-chart-alt-2"></i><span>Relatórios</span></a>
-        <a href="#"><i class="bx bx-cog"></i><span>Definições</span></a>
+        <p class="nav-caption">Atendimento</p>
+        <a href="#clientes" data-owner-view="clients"><i class="bx bx-user"></i><span>Clientes</span></a>
+        <a href="#propostas" data-owner-view="proposals"><i class="bx bx-file"></i><span>Propostas</span></a>
+
+        <p class="nav-caption">Desempenho</p>
+        <a href="#pagamentos" data-owner-view="payments"><i class="bx bx-wallet"></i><span>Receitas e pagamentos</span></a>
+        <a href="#relatorios" data-owner-view="reports"><i class="bx bx-bar-chart-alt-2"></i><span>Relatórios</span></a>
       </nav>
 
-      <div class="sidebar__help">
-        <i class="bx bx-headphone"></i>
-        <div>
-          <strong>Precisa de ajuda?</strong>
-          <small>A nossa equipa está disponível.</small>
-        </div>
-        <button class="btn btn--navy btn--block" type="button">Contactar suporte</button>
-      </div>
+      <button class="sidebar__logout" type="button" data-logout><i class="bx bx-log-out"></i><span>Terminar sessão</span></button>
+
     </aside>
 
     <div class="app-main">
@@ -62,10 +59,10 @@
             <span class="dot"></span>
           </button>
           <button class="profile-btn" type="button">
-            <span class="avatar">AM</span>
+            <span class="avatar" id="ownerAvatar">MA</span>
             <div>
-              <strong>Amélia Manuel</strong>
-              <small>Administradora</small>
+              <strong id="ownerName">Manuel António</strong>
+              <small>Proprietário</small>
             </div>
             <i class="bx bx-chevron-down"></i>
           </button>
@@ -73,11 +70,12 @@
       </header>
 
       <main class="app-content">
+        <section class="owner-view" data-owner-panel="overview">
         <section class="welcome">
           <div>
-            <span class="eyebrow">Quarta-feira, 29 de Julho</span>
-            <h2>Bom dia, Amélia.</h2>
-            <p>Acompanhe o desempenho e mantenha os próximos eventos sob controlo.</p>
+            <span class="eyebrow" id="ownerDate"></span>
+            <h2 id="ownerGreeting">Bom dia.</h2>
+            <p>Acompanhe o desempenho dos seus salões e mantenha os próximos eventos sob controlo.</p>
           </div>
           <a class="btn btn--primary" href="dashboard-proprietario-visitas.html">
             <i class="bx bx-calendar-check"></i> Ver pedidos de visita
@@ -91,11 +89,6 @@
               <i class="bx bx-wallet"></i>
             </div>
             <strong>MZN 1,25M</strong>
-            <p><em class="up"><i class="bx bx-trending-up"></i> 12,4%</em> em relação a Junho</p>
-            <div class="sparkline" aria-hidden="true">
-              <i style="height:8px"></i><i style="height:13px"></i><i style="height:10px"></i>
-              <i style="height:20px"></i><i style="height:15px"></i><i style="height:24px"></i><i style="height:30px"></i>
-            </div>
           </article>
 
           <article class="card metric">
@@ -104,11 +97,6 @@
               <i class="bx bx-calendar-check"></i>
             </div>
             <strong>48</strong>
-            <p><em class="up"><i class="bx bx-trending-up"></i> 8,1%</em> em relação a Junho</p>
-            <div class="sparkline" aria-hidden="true">
-              <i style="height:12px"></i><i style="height:9px"></i><i style="height:17px"></i>
-              <i style="height:14px"></i><i style="height:22px"></i><i style="height:19px"></i><i style="height:27px"></i>
-            </div>
           </article>
 
           <article class="card metric">
@@ -117,8 +105,6 @@
               <i class="bx bx-pie-chart-alt"></i>
             </div>
             <strong>78%</strong>
-            <p><em class="up"><i class="bx bx-trending-up"></i> 5,6%</em> em relação a Junho</p>
-            <div class="track"><span style="width:78%"></span></div>
           </article>
 
           <article class="card metric">
@@ -127,11 +113,6 @@
               <i class="bx bx-time-five"></i>
             </div>
             <strong>12</strong>
-            <p><em class="down"><i class="bx bx-trending-down"></i> 3,2%</em> em relação a Junho</p>
-            <div class="chip-row">
-              <span>5 hoje</span>
-              <span>7 anteriores</span>
-            </div>
           </article>
         </section>
 
@@ -156,7 +137,7 @@
                 <h2>Próximos eventos</h2>
                 <p>Agenda dos próximos dias</p>
               </div>
-              <a class="link-arrow" href="#">Ver agenda <i class="bx bx-right-arrow-alt"></i></a>
+              <a class="link-arrow" href="#agenda" data-owner-view="agenda">Ver agenda <i class="bx bx-right-arrow-alt"></i></a>
             </div>
 
             <div class="agenda">
@@ -203,7 +184,7 @@
                 <h2>Reservas recentes</h2>
                 <p>Últimas solicitações recebidas</p>
               </div>
-              <a class="link-arrow" href="#">Ver todas <i class="bx bx-right-arrow-alt"></i></a>
+              <a class="link-arrow" href="dashboard-proprietario-visitas.html">Ver solicitações <i class="bx bx-right-arrow-alt"></i></a>
             </div>
 
             <div class="table-scroll">
@@ -288,13 +269,22 @@
             </ul>
           </article>
         </section>
+        </section>
+
+        <section class="owner-view" data-owner-panel="agenda" hidden><div class="page-head"><div><span class="eyebrow">Calendário</span><h2>Agenda</h2><p>Visitas, reservas e períodos indisponíveis dos seus salões.</p></div><a class="btn btn--primary" href="dashboard-proprietario-visitas.html"><i class="bx bx-calendar-check"></i> Gerir visitas</a></div><form class="card agenda-block-form" id="agendaBlockForm"><div><strong>Bloquear disponibilidade</strong><small>Use quando o salão estiver ocupado ou indisponível.</small></div><label>Salão<select name="venueId" id="agendaBlockVenue" required></select></label><label>Data<input name="date" type="date" required></label><label>Horário<select name="time"><option value="">Dia inteiro</option><option>09:00</option><option>11:00</option><option>14:00</option><option>16:00</option></select></label><label>Motivo<input name="reason" placeholder="Ex.: Evento privado" required></label><button class="btn btn--navy" type="submit"><i class="bx bx-lock"></i> Bloquear</button></form><div class="agenda-layout"><section><h3>Visitas e reservas</h3><div class="owner-section-grid" id="ownerAgenda"></div></section><section><h3>Datas bloqueadas</h3><div class="owner-section-grid" id="ownerAgendaBlocks"></div></section></div></section>
+        <section class="owner-view" data-owner-panel="reservations" hidden><div class="page-head"><div><span class="eyebrow">Eventos</span><h2>Reservas</h2><p>Acompanhe somente os processos de reserva iniciados após a negociação.</p></div></div><section class="visit-metrics"><article class="card"><i class="bx bx-time-five"></i><div><strong id="reservationPendingMetric">0</strong><span>Reservas pendentes</span></div></article><article class="card"><i class="bx bx-check-circle"></i><div><strong id="reservationConfirmedMetric">0</strong><span>Reservas confirmadas</span></div></article><article class="card"><i class="bx bx-x-circle"></i><div><strong id="reservationCancelledMetric">0</strong><span>Reservas canceladas</span></div></article></section><div id="ownerReservations"></div></section>
+        <section class="owner-view" data-owner-panel="venues" hidden><div class="page-head"><div><span class="eyebrow">Portefólio</span><h2>Meus salões</h2><p>Consulte e atualize as informações públicas dos seus espaços.</p></div></div><div class="owner-section-grid" id="ownerVenues"></div></section>
+        <section class="owner-view" data-owner-panel="clients" hidden><div class="page-head"><div><span class="eyebrow">Atendimento</span><h2>Clientes</h2><p>Consulte os contactos e o histórico de solicitações dos clientes.</p></div></div><div id="ownerClients"></div></section>
+        <section class="owner-view" data-owner-panel="proposals" hidden><div class="page-head"><div><span class="eyebrow">Negociação</span><h2>Propostas</h2><p>Prepare propostas para clientes com visitas confirmadas.</p></div></div><div class="owner-section-grid" id="ownerProposals"></div></section>
+        <section class="owner-view" data-owner-panel="payments" hidden><div class="page-head"><div><span class="eyebrow">Financeiro</span><h2>Receitas e pagamentos</h2><p>Pagamentos únicos de 100% associados às reservas dos seus salões.</p></div></div><div class="owner-section-grid" id="ownerPayments"></div></section>
+        <section class="owner-view" data-owner-panel="reports" hidden><div class="page-head"><div><span class="eyebrow">Desempenho</span><h2>Relatórios</h2><p>Indicadores operacionais dos pedidos, clientes e reservas.</p></div></div><div class="metric-grid" id="ownerReports"></div></section>
       </main>
     </div>
   </div>
 
   <div class="backdrop" id="backdrop"></div>
-  <script src="../assets/js/app-shell.js"></script>
+  <script src="../assets/js/app-shell.js?v=20260807-list-pagination"></script>
   <script src="../assets/js/vendor.js"></script>
-  <script src="../assets/js/pages/dashboard.js"></script>
+  <script src="../assets/js/pages/dashboard.js?v=20260807-remove-owner-messages"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link href="../assets/css/icons.min.css" rel="stylesheet">
   <link href="../assets/css/base.css" rel="stylesheet">
-  <link href="../assets/css/auth.css" rel="stylesheet">
+  <link href="../assets/css/auth.css?v=20260804-red-errors" rel="stylesheet">
 </head>
 <body>
   <div class="auth">
@@ -44,9 +44,9 @@
         </a>
 
         <h1>Criar conta</h1>
-        <p>Leva menos de um minuto e não precisa de cartão.</p>
+        <p>Use o seu e-mail, telefone ou ambos. Depois confirme o contacto com o código OTP.</p>
 
-        <form action="../telas/Tela principal.html" method="get">
+        <form id="registerForm" novalidate>
           <label class="field">
             <span>Nome completo</span>
             <input type="text" name="name" placeholder="Nome completo" autocomplete="name" required>
@@ -54,12 +54,14 @@
 
           <label class="field">
             <span>E-mail</span>
-            <input type="email" name="email" placeholder="nome@exemplo.com" autocomplete="email" required>
+            <input type="email" name="email" placeholder="nome@exemplo.com" autocomplete="email">
+            <small class="auth-error" id="registerEmailError" role="alert"></small>
           </label>
 
           <label class="field">
             <span>Telefone</span>
-            <input type="tel" name="phone" placeholder="+258 8X XXX XXXX" autocomplete="tel" required>
+            <input type="tel" name="phone" placeholder="+258 8X XXX XXXX" autocomplete="tel">
+            <small class="auth-error" id="registerPhoneError" role="alert"></small>
           </label>
 
           <div class="field password-field">
@@ -73,12 +75,30 @@
             </button>
           </div>
 
+          <div class="field password-field">
+            <label for="passwordConfirmation"><span>Confirmar senha</span></label>
+            <input id="passwordConfirmation" type="password" name="confirmation" placeholder="Digite novamente a senha" autocomplete="new-password" minlength="8" required>
+            <button type="button" data-toggle-password="passwordConfirmation" aria-label="Mostrar senha"><i class="bx bx-show"></i></button>
+          </div>
+
+          <p class="auth-error" id="registerError" role="alert"></p>
+
           <label class="checkbox">
             <input type="checkbox" name="terms" required>
             <span>Aceito os termos de utilização e a política de privacidade.</span>
           </label>
 
           <button class="btn btn--primary btn--block" type="submit">Criar conta</button>
+        </form>
+
+        <form id="registerOtpForm" class="is-hidden" novalidate>
+          <h2>Confirme o seu contacto</h2>
+          <p id="registerOtpDestination"></p>
+          <div class="otp-demo"><small>Código fictício para demonstração</small><strong>246810</strong></div>
+          <label class="field"><span>Código OTP</span><input name="otp" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="000000" required></label>
+          <p class="auth-error" id="registerOtpError" role="alert"></p>
+          <button class="btn btn--primary btn--block" type="submit">Confirmar e entrar</button>
+          <button class="btn btn--outline btn--block" id="backToRegister" type="button">Corrigir os dados</button>
         </form>
 
         <div class="auth__divider">ou</div>
@@ -89,6 +109,6 @@
     </main>
   </div>
 
-  <script src="../assets/js/auth.js"></script>
+  <script src="../assets/js/auth.js?v=20260804-field-errors"></script>
 </body>
 </html>

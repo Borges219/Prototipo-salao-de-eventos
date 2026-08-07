@@ -38,7 +38,7 @@
       </button>
       <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
         <a href="#topo" aria-current="page">Início</a>
-        <a href="#espacos">Explorar espaços</a>
+        <a href="espacos.html">Explorar espaços</a>
         <a href="#como-funciona">Como funciona</a>
         <a href="#vantagens">Porquê Espaço ON</a>
         <a href="contactos.html">Contactos</a>
@@ -81,8 +81,7 @@
           </div>
 
           <div class="hero__actions">
-            <a class="btn btn--primary" href="#espacos"><i class="bx bx-search"></i> Pesquisar espaços</a>
-            <a class="btn btn--clear" href="#como-funciona">Ver como funciona</a>
+            <a class="btn btn--primary" href="espacos.html"><i class="bx bx-search"></i> Pesquisar espaços</a>
           </div>
         </div>
       </div>
@@ -156,14 +155,15 @@
           <h2>Espaços que vale a pena conhecer</h2>
           <p>Opções bem avaliadas e prontas para receber o seu evento.</p>
         </div>
-        <a class="link-arrow" href="categoria-eventos.html?tipo=social">Ver todos os espaços <i class="bx bx-right-arrow-alt"></i></a>
+        <a class="link-arrow" href="espacos.html">Ver todos os espaços <i class="bx bx-right-arrow-alt"></i></a>
       </div>
 
       <div class="venue-grid">
         <article class="venue-card reveal">
-          <div class="venue-card__photo" style="--photo:url('../assets/images/landing-slide-1.jpg')">
+          <div class="venue-card__photo">
+            <img src="../assets/images/salao-acacia-destaque-web.jpg" alt="Salão Acácia decorado para casamento">
             <span>Mais reservado</span>
-            <button class="favorite" type="button" aria-label="Guardar Salão Acácia" aria-pressed="false">
+            <button class="favorite" type="button" data-venue-id="acacia" aria-label="Guardar Salão Acácia" aria-pressed="false">
               <i class="bx bx-heart"></i>
             </button>
           </div>
@@ -183,16 +183,17 @@
         </article>
 
         <article class="venue-card reveal">
-          <div class="venue-card__photo" style="--photo:url('../assets/images/landing-slide-3.jpg')">
-            <span>Dentro do orçamento</span>
-            <button class="favorite" type="button" aria-label="Guardar Jardim Ndlovu" aria-pressed="false">
+          <div class="venue-card__photo">
+            <img src="../assets/images/ndlovu-conferencia-vazia-ai.jpg" alt="Sala preparada para conferência corporativa no Jardim Ndlovu">
+            <span>Salão corporativo</span>
+            <button class="favorite" type="button" data-venue-id="ndlovu" aria-label="Guardar Jardim Ndlovu" aria-pressed="false">
               <i class="bx bx-heart"></i>
             </button>
           </div>
           <div class="venue-card__body">
             <div class="venue-card__meta">
               <strong><i class="bx bxs-star"></i> 4,8</strong>
-              <span>64 avaliações · Ao ar livre</span>
+              <span>64 avaliações · Corporativo</span>
             </div>
             <h3>Jardim Ndlovu</h3>
             <p class="venue-card__place"><i class="bx bx-map"></i> Matola Rio, Matola</p>
@@ -205,9 +206,10 @@
         </article>
 
         <article class="venue-card reveal">
-          <div class="venue-card__photo" style="--photo:url('../assets/images/landing-slide-2.jpg')">
+          <div class="venue-card__photo">
+            <img src="../assets/images/baia-salao-praia-ai.jpg" alt="Salão principal do Baía Lounge com vista para a praia">
             <span>Vista para o mar</span>
-            <button class="favorite" type="button" aria-label="Guardar Baía Lounge" aria-pressed="false">
+            <button class="favorite" type="button" data-venue-id="baia" aria-label="Guardar Baía Lounge" aria-pressed="false">
               <i class="bx bx-heart"></i>
             </button>
           </div>
@@ -316,7 +318,7 @@
       <div class="faq-list reveal">
         <details>
           <summary>Preciso de criar conta para pesquisar espaços? <i class="bx bx-plus"></i></summary>
-          <p>Não. Pode pesquisar espaços, consultar detalhes e agendar visitas sem criar uma conta. O cadastro será necessário apenas para guardar favoritos ou efectuar uma reserva.</p>
+          <p>Pode pesquisar espaços e consultar detalhes sem criar uma conta. Ao solicitar uma visita, a sua conta é criada automaticamente após confirmar o código OTP e definir uma palavra-passe.</p>
         </details>
         <details>
           <summary>O preço apresentado é o valor final? <i class="bx bx-plus"></i></summary>
@@ -324,7 +326,7 @@
         </details>
         <details>
           <summary>Como funciona o agendamento de visita? <i class="bx bx-plus"></i></summary>
-          <p>Escolha um horário disponível na página do espaço. Não é necessário criar conta. A instituição poderá confirmar ou propor uma alteração através dos contactos informados no pedido.</p>
+          <p>Escolha um horário e preencha os seus dados na página do espaço. Depois de confirmar o OTP, entrará no seu perfil para acompanhar a resposta e conversar directamente com o proprietário.</p>
         </details>
         <details>
           <summary>Quando a reserva fica confirmada? <i class="bx bx-plus"></i></summary>
@@ -390,6 +392,6 @@
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="../assets/js/portal.js"></script>
+  <script src="../assets/js/portal.js?v=20260804-favorites"></script>
 </body>
 </html>

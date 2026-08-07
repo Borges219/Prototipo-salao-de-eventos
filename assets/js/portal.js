@@ -3,6 +3,15 @@
 (function () {
   'use strict';
 
+  /* Limpeza única solicitada para reiniciar a demonstração do fluxo de visitas. */
+  var visitResetVersion = '20260804-new-visit-flow';
+  if (window.localStorage.getItem('espacon_visit_reset_version') !== visitResetVersion) {
+    window.localStorage.removeItem('espacon_visit_requests');
+    window.localStorage.removeItem('espacon_owner_proposals');
+    window.localStorage.removeItem('espacon_pending_activation');
+    window.localStorage.setItem('espacon_visit_reset_version', visitResetVersion);
+  }
+
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   /* Menu de navegação em ecrãs pequenos. */
@@ -110,20 +119,33 @@
     });
   }
 
-  /* Guardar espaços exige conta, por isso encaminhamos para o registo. */
+  /* Guarda o espaço na conta do cliente e abre a área de favoritos. */
   function setupFavourites() {
     var buttons = document.querySelectorAll('.favorite');
     if (!buttons.length) return;
 
+    var session = JSON.parse(window.localStorage.getItem('espacon_session') || 'null');
+    var allFavourites = JSON.parse(window.localStorage.getItem('espacon_favorites') || '{}');
+    var current = session && session.role === 'client' ? (allFavourites[session.userId] || []) : [];
     buttons.forEach(function (button) {
+      var detailsLink = button.closest('.venue-card') && button.closest('.venue-card').querySelector('a[href*="detalhes-salao.html?id="]');
+      var venueId = button.dataset.venueId || (detailsLink ? new URL(detailsLink.href).searchParams.get('id') : '');
+      if (!venueId) return;
+      if (current.includes(venueId)) { button.setAttribute('aria-pressed', 'true'); button.classList.add('is-saved'); button.querySelector('i').className = 'bx bxs-heart'; }
       button.addEventListener('click', function () {
+        venueId = button.dataset.venueId || venueId;
         button.setAttribute('aria-pressed', 'true');
         button.classList.add('is-saved');
         button.querySelector('i').className = 'bx bxs-heart';
-        window.EspacoOn.toast('Crie uma conta para guardar espaços nos favoritos.');
-        window.setTimeout(function () {
-          window.location.href = '../auth/register.html';
-        }, 1600);
+        if (session && session.role === 'client') {
+          if (!current.includes(venueId)) current.push(venueId);
+          allFavourites[session.userId] = current;
+          window.localStorage.setItem('espacon_favorites', JSON.stringify(allFavourites));
+          window.location.href = 'dashboard-cliente.html#favoritos';
+        } else {
+          window.localStorage.setItem('espacon_pending_favorite', venueId);
+          window.location.href = '../auth/login.html?next=favoritos';
+        }
       });
     });
   }

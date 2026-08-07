@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ativar conta | Espaço ON</title>
+  <meta name="robots" content="noindex">
+  <link rel="shortcut icon" href="../assets/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/icons.min.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/auth.css" rel="stylesheet">
+</head>
+<body>
+  <div class="auth">
+    <aside class="auth__aside">
+      <a href="../telas/Tela principal.html"><img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="158" height="51"></a>
+      <div class="auth__pitch"><h2>O seu próximo evento começa aqui.</h2><p>A visita já está registada. Ative a sua conta gratuita e acompanhe todos os próximos passos com tranquilidade.</p><ul><li><i class="bx bx-check"></i> Consulte a data e o estado da visita</li><li><i class="bx bx-check"></i> Fale diretamente com o proprietário</li><li><i class="bx bx-check"></i> Receba respostas, propostas e novidades</li></ul></div>
+    </aside>
+    <main class="auth__panel">
+      <div class="auth__form">
+        <a class="brand" href="../telas/Tela principal.html"><img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="150" height="49"></a>
+        <div class="success-mark"><i class="bx bx-check"></i></div>
+        <h1>Visita agendada! Agora acompanhe tudo num só lugar.</h1>
+        <p>O seu pedido foi registado e criámos gratuitamente o seu perfil no Espaço ON. Nele poderá acompanhar a resposta do proprietário, trocar mensagens e consultar todos os detalhes da visita.</p>
+        <p class="activation-note"><strong>Falta apenas um passo:</strong> crie uma palavra-passe segura para entrar no seu perfil.</p>
+        <form id="activationForm" novalidate>
+          <div class="field password-field"><label for="newPassword"><span>Crie a sua palavra-passe</span></label><input id="newPassword" type="password" name="password" minlength="8" autocomplete="new-password" placeholder="Use pelo menos 8 caracteres" required><button type="button" data-toggle-password="newPassword" aria-label="Mostrar palavra-passe"><i class="bx bx-show"></i></button></div>
+          <div class="field password-field"><label for="confirmPassword"><span>Confirme a palavra-passe</span></label><input id="confirmPassword" type="password" name="confirmation" minlength="8" autocomplete="new-password" placeholder="Digite novamente a palavra-passe" required><button type="button" data-toggle-password="confirmPassword" aria-label="Mostrar palavra-passe"><i class="bx bx-show"></i></button></div>
+          <p class="auth-error" id="activationError" role="alert"></p>
+          <button class="btn btn--primary btn--block" type="submit">Ativar conta e ver a minha visita</button>
+        </form>
+      </div>
+    </main>
+  </div>
+  <script src="../assets/js/auth.js?v=20260804-password-confirmation"></script>
+  <script src="../assets/js/account-flow.js"></script>
+</body>
+</html>

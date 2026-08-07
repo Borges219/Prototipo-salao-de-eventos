@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minha área | Espaço ON</title>
+  <meta name="robots" content="noindex">
+  <link rel="shortcut icon" href="../assets/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/icons.min.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/dashboard.css?v=20260804-password-eyes" rel="stylesheet">
+</head>
+<body class="app">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="sidebar__brand" href="Tela principal.html"><img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="170" height="55"></a>
+      <nav aria-label="Navegação do cliente">
+        <p class="nav-caption">Minha conta</p>
+        <a href="#visao-geral" data-client-view="overview" aria-current="page"><i class="bx bx-grid-alt"></i><span>Visão geral</span></a>
+        <a href="#agenda" data-client-view="agenda"><i class="bx bx-calendar-check"></i><span>Agenda</span><b id="clientVisitCount">0</b></a>
+        <a href="#mensagens" data-client-view="messages"><i class="bx bx-message-rounded-dots"></i><span>Mensagens</span></a>
+        <a href="#favoritos" data-client-view="favorites"><i class="bx bx-heart"></i><span>Salões favoritos</span><b id="clientFavoriteCount">0</b></a>
+        <a href="#explorar-espacos" data-client-view="explore"><i class="bx bx-search"></i><span>Explorar espaços</span></a>
+        <p class="nav-caption">Conta</p>
+        <a href="#dados-pessoais" data-client-view="profile"><i class="bx bx-user"></i><span>Dados pessoais</span></a>
+      </nav>
+      <button class="sidebar__logout" type="button" data-logout><i class="bx bx-log-out"></i><span>Terminar sessão</span></button>
+    </aside>
+
+    <div class="app-main">
+      <header class="app-topbar">
+        <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"><i class="bx bx-menu"></i></button>
+        <h1>Minha área</h1>
+        <div class="topbar-actions">
+          <button class="icon-btn" type="button" aria-label="Notificações"><i class="bx bx-bell"></i><span class="dot"></span></button>
+          <button class="profile-btn" type="button"><span class="avatar" id="clientAvatar">CL</span><div><strong id="clientName">Cliente</strong><small>Cliente</small></div><i class="bx bx-chevron-down"></i></button>
+        </div>
+      </header>
+
+      <main class="app-content">
+        <section class="client-view" id="view-overview" data-view="overview">
+          <section class="welcome"><div><span class="eyebrow">Bem-vindo ao Espaço ON</span><h2 id="welcomeTitle">Acompanhe o seu evento</h2><p>Veja as suas visitas, respostas dos proprietários e próximos passos num só lugar.</p></div><button class="btn btn--primary" type="button" data-open-view="explore"><i class="bx bx-plus"></i> Encontrar outro espaço</button></section>
+          <section class="visit-metrics" aria-label="Resumo da conta">
+          <article class="card"><i class="bx bx-calendar"></i><div><strong id="metricAll">0</strong><span>Visitas solicitadas</span></div></article>
+          <article class="card"><i class="bx bx-time-five"></i><div><strong id="metricPending">0</strong><span>Aguardam resposta</span></div></article>
+          <article class="card"><i class="bx bx-calendar-check"></i><div><strong id="metricConfirmed">0</strong><span>Visitas confirmadas</span></div></article>
+          <article class="card"><i class="bx bx-message-rounded-dots"></i><div><strong id="metricMessages">0</strong><span>Mensagens</span></div></article>
+          </section>
+          <section class="client-quick-grid">
+            <button class="card client-quick" type="button" data-open-view="agenda"><i class="bx bx-calendar-check"></i><strong>Abrir agenda</strong><span>Consulte as suas visitas e reservas.</span></button>
+            <button class="card client-quick" type="button" data-open-view="messages"><i class="bx bx-message-rounded-dots"></i><strong>Abrir mensagens</strong><span>Converse com os proprietários.</span></button>
+            <button class="card client-quick" type="button" data-open-view="explore"><i class="bx bx-search"></i><strong>Explorar espaços</strong><span>Encontre outras opções sem sair da sua conta.</span></button>
+          </section>
+        </section>
+
+        <section class="client-view" id="view-agenda" data-view="agenda" hidden>
+          <div class="client-page-head"><div><span class="eyebrow">Agenda</span><h2>Visitas e reservas</h2><p>Acompanhe as visitas solicitadas e as reservas dos seus eventos.</p></div></div>
+          <nav class="agenda-subnav" aria-label="Secções da agenda">
+            <button class="is-active" type="button" data-agenda-section="visits"><i class="bx bx-calendar-check"></i> Visitas <b id="agendaVisitCount">0</b></button>
+            <button type="button" data-agenda-section="reservations"><i class="bx bx-bookmark"></i> Reservas <b id="agendaReservationCount">0</b></button>
+            <button type="button" data-agenda-section="payments"><i class="bx bx-wallet"></i> Pagamentos <b id="agendaPaymentCount">0</b></button>
+          </nav>
+          <div data-agenda-panel="visits">
+          <section class="workspace" id="minhas-visitas">
+          <div class="workspace__list"><div class="workspace__filters"><div><strong>Minhas visitas</strong><small> Seleccione um pedido para ver os detalhes</small></div></div><div class="visit-list scroll-y" id="clientVisitList"></div></div>
+          <aside class="workspace__detail" id="clientVisitDetail"><div class="detail-empty"><i class="bx bx-calendar"></i><h3>Nenhuma visita seleccionada</h3><p>Os detalhes e a conversa aparecerão aqui.</p></div></aside>
+          </section>
+          </div>
+          <div data-agenda-panel="reservations" hidden><div class="client-stack" id="clientReservations"></div></div>
+          <div data-agenda-panel="payments" hidden><div class="client-stack" id="clientPayments"></div></div>
+        </section>
+
+        <section class="client-view" id="view-messages" data-view="messages" hidden><div class="client-page-head"><div><span class="eyebrow">Conversas</span><h2>Mensagens</h2><p>Todas as conversas com os proprietários dos espaços.</p></div></div><div class="client-stack" id="clientMessages"></div></section>
+        <section class="client-view" id="view-favorites" data-view="favorites" hidden><div class="client-page-head"><div><span class="eyebrow">A sua seleção</span><h2>Salões favoritos</h2><p>Espaços guardados através do coração na página inicial.</p></div><button class="btn btn--primary" type="button" data-open-view="explore"><i class="bx bx-search"></i> Explorar mais espaços</button></div><div class="client-venue-grid" id="clientFavoriteGrid"></div></section>
+
+        <section class="client-view" id="view-explore" data-view="explore" hidden>
+          <div class="client-page-head client-page-head--blue"><div><span class="eyebrow">Catálogo</span><h2>Explorar espaços</h2><p>Pesquise espaços sociais e corporativos sem sair do seu perfil.</p></div></div>
+          <section class="client-explore-filters card">
+            <label>Nome do salão<input id="dashVenueSearch" type="search" placeholder="Pesquisar pelo nome"></label>
+            <label>Tipo<select id="dashVenueType"><option value="">Todos</option><option value="social">Social</option><option value="corporativo">Corporativo</option></select></label>
+            <label>Localização<select id="dashVenueCity"><option value="">Todas</option></select></label>
+            <button class="btn btn--primary" id="dashApplyFilters" type="button">Aplicar filtros</button>
+          </section>
+          <p class="client-results-count" id="dashResultsCount"></p>
+          <div class="client-venue-grid" id="dashVenueGrid"></div>
+          <section class="client-venue-detail" id="dashVenueDetail" hidden></section>
+        </section>
+
+        <section class="client-view" id="view-profile" data-view="profile" hidden>
+          <div class="client-page-head"><div><span class="eyebrow">A sua conta</span><h2>Dados pessoais</h2><p>Consulte e atualize os dados usados na sua conta.</p></div></div>
+          <div class="client-profile-grid">
+            <form class="card client-form" id="personalDataForm"><h3>Informação pessoal</h3><label>Nome completo<input id="profileName" name="name" required></label><label>Telefone <small>(opcional se usar e-mail)</small><input id="profilePhone" name="phone" type="tel"></label><label>E-mail <small>(opcional se usar telefone)</small><input id="profileEmail" name="email" type="email"></label><button class="btn btn--primary" type="submit">Guardar alterações</button></form>
+            <form class="card client-form" id="passwordForm"><h3>Nova palavra-passe</h3><div class="field password-field"><label for="profilePassword">Nova palavra-passe</label><input id="profilePassword" name="password" type="password" minlength="8" required><button type="button" data-toggle-password="profilePassword" aria-label="Mostrar palavra-passe"><i class="bx bx-show"></i></button></div><div class="field password-field"><label for="profilePasswordConfirmation">Confirmar palavra-passe</label><input id="profilePasswordConfirmation" name="confirmation" type="password" minlength="8" required><button type="button" data-toggle-password="profilePasswordConfirmation" aria-label="Mostrar palavra-passe"><i class="bx bx-show"></i></button></div><small>Mínimo de 8 caracteres.</small><button class="btn btn--navy" type="submit">Atualizar palavra-passe</button></form>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  <div class="backdrop" id="backdrop"></div>
+  <div class="toast toast--corner" id="toast" role="status" aria-live="polite"></div>
+  <script src="../assets/js/app-shell.js?v=20260807-list-pagination"></script>
+  <script src="../assets/js/pages/client-dashboard.js?v=20260806-separated-booking-flow"></script>
+</body>
+</html>

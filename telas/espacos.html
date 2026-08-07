@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Todos os espaços | Espaço ON</title>
+  <meta name="description" content="Pesquise e compare espaços sociais e corporativos por nome, localização, capacidade e preço.">
+  <meta name="theme-color" content="#06253c">
+  <link rel="shortcut icon" href="../assets/images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="../assets/css/icons.min.css" rel="stylesheet">
+  <link href="../assets/css/base.css" rel="stylesheet">
+  <link href="../assets/css/portal.css" rel="stylesheet">
+</head>
+<body class="portal">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="Tela principal.html"><img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="148" height="48"></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="siteNav"><i class="bx bx-menu"></i></button>
+      <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
+        <a href="Tela principal.html">Início</a>
+        <a href="espacos.html" aria-current="page">Explorar espaços</a>
+        <a href="Tela principal.html#como-funciona">Como funciona</a>
+        <a href="contactos.html">Contactos</a>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn--outline" href="../auth/login.html">Entrar</a>
+        <a class="btn btn--navy" href="../auth/register.html">Criar conta</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="catalog-layout wrap">
+      <aside class="catalog-filters" aria-label="Filtros de pesquisa">
+        <div class="catalog-filters__head">
+          <h2>Filtros</h2>
+          <button type="button" id="clearFilters">Limpar</button>
+        </div>
+        <div class="filter-field">
+          <label for="searchVenue">Nome do salão</label>
+          <input id="searchVenue" type="search" placeholder="Ex.: Salão Acácia">
+        </div>
+        <div class="filter-field">
+          <label for="filterType">Tipo de evento</label>
+          <select id="filterType"><option value="">Todos os tipos</option><option value="social">Eventos sociais</option><option value="corporativo">Eventos corporativos</option></select>
+        </div>
+        <div class="filter-field">
+          <label for="filterCity">Cidade ou zona</label>
+          <select id="filterCity"><option value="">Todas as localizações</option></select>
+        </div>
+        <div class="filter-field">
+          <label for="filterCapacity">Capacidade mínima</label>
+          <select id="filterCapacity"><option value="0">Qualquer capacidade</option><option value="80">80 pessoas</option><option value="150">150 pessoas</option><option value="250">250 pessoas</option><option value="400">400 pessoas</option></select>
+        </div>
+        <div class="filter-field">
+          <label for="filterPrice">Preço máximo</label>
+          <select id="filterPrice"><option value="0">Qualquer preço</option><option value="100000">Até 100.000 MZN</option><option value="150000">Até 150.000 MZN</option><option value="200000">Até 200.000 MZN</option><option value="250000">Até 250.000 MZN</option></select>
+        </div>
+        <button class="btn btn--primary btn--block catalog-filters__apply" id="applyFilters" type="button"><i class="bx bx-slider-alt"></i> Aplicar filtros</button>
+      </aside>
+
+      <div class="catalog-results">
+        <div class="catalog-results__head">
+          <div><span class="eyebrow">Resultados</span><h2 id="resultsTitle">Espaços disponíveis</h2><p id="resultsCount" aria-live="polite"></p></div>
+          <div class="filter-field filter-field--sort"><label for="sortVenues">Ordenar por</label><select id="sortVenues"><option value="recommended">Recomendados</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option><option value="capacity-desc">Maior capacidade</option><option value="rating-desc">Melhor avaliação</option></select></div>
+        </div>
+        <div class="venue-grid catalog-grid" id="allVenueGrid"></div>
+        <div class="catalog-empty" id="catalogEmpty" hidden><i class="bx bx-search-alt"></i><h3>Nenhum espaço encontrado</h3><p>Altere ou limpe os filtros para ver outras opções.</p><button class="btn btn--navy" type="button" id="emptyClear">Limpar filtros</button></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/portal.js"></script>
+  <script src="../assets/js/espacos.js"></script>
+</body>
+</html>

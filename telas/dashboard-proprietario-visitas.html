@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link href="../assets/css/icons.min.css" rel="stylesheet">
   <link href="../assets/css/base.css" rel="stylesheet">
-  <link href="../assets/css/dashboard.css" rel="stylesheet">
+  <link href="../assets/css/dashboard.css?v=20260807-request-detail-context" rel="stylesheet">
 </head>
 <body class="app">
   <div class="app-shell">
@@ -25,26 +25,23 @@
         <p class="nav-caption">Meu espaço</p>
         <a href="dashboard-administrativo.html"><i class="bx bx-grid-alt"></i><span>Visão geral</span></a>
         <a href="dashboard-proprietario-visitas.html" aria-current="page">
-          <i class="bx bx-calendar-check"></i><span>Solicitações de visitas</span><b id="navPendingCount">0</b>
+          <i class="bx bx-calendar-check"></i><span>Solicitações</span><b id="navPendingCount">0</b>
         </a>
-        <a href="#"><i class="bx bx-calendar"></i><span>Agenda</span></a>
-        <a href="#"><i class="bx bx-bookmark"></i><span>Reservas</span></a>
-        <a href="#"><i class="bx bx-building-house"></i><span>Meus salões</span></a>
+        <a href="dashboard-administrativo.html#agenda"><i class="bx bx-calendar"></i><span>Agenda</span></a>
+        <a href="dashboard-administrativo.html#reservas"><i class="bx bx-bookmark"></i><span>Reservas</span></a>
+        <a href="dashboard-administrativo.html#meus-saloes"><i class="bx bx-building-house"></i><span>Meus salões</span></a>
 
         <p class="nav-caption">Atendimento</p>
-        <a href="#"><i class="bx bx-message-rounded-dots"></i><span>Mensagens</span></a>
-        <a href="#"><i class="bx bx-file"></i><span>Propostas</span></a>
-        <a href="#"><i class="bx bx-cog"></i><span>Definições</span></a>
+        <a href="dashboard-administrativo.html#clientes"><i class="bx bx-user"></i><span>Clientes</span></a>
+        <a href="dashboard-administrativo.html#propostas"><i class="bx bx-file"></i><span>Propostas</span></a>
+
+        <p class="nav-caption">Desempenho</p>
+        <a href="dashboard-administrativo.html#pagamentos"><i class="bx bx-wallet"></i><span>Receitas e pagamentos</span></a>
+        <a href="dashboard-administrativo.html#relatorios"><i class="bx bx-bar-chart-alt-2"></i><span>Relatórios</span></a>
       </nav>
 
-      <div class="sidebar__help">
-        <i class="bx bx-headphone"></i>
-        <div>
-          <strong>Precisa de ajuda?</strong>
-          <small>A nossa equipa está disponível.</small>
-        </div>
-        <button class="btn btn--navy btn--block" type="button">Contactar suporte</button>
-      </div>
+      <button class="sidebar__logout" type="button" data-logout><i class="bx bx-log-out"></i><span>Terminar sessão</span></button>
+
     </aside>
 
     <div class="app-main">
@@ -52,7 +49,7 @@
         <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
           <i class="bx bx-menu"></i>
         </button>
-        <h1>Solicitações de visitas</h1>
+        <h1 id="ownerVisitsPageTitle">Solicitações de visitas</h1>
 
         <div class="topbar-actions">
           <button class="icon-btn" type="button" aria-label="Notificações">
@@ -71,18 +68,16 @@
       </header>
 
       <main class="app-content">
-        <section class="page-head">
+        <section class="page-head" id="ownerRequestsHeader">
           <div>
-            <span class="eyebrow">Agenda do proprietário</span>
-            <h2>Pedidos de visita</h2>
-            <p>Confirme horários, proponha alterações e acompanhe cada conversa com o cliente.</p>
+            <h2>Solicitações</h2>
           </div>
           <a class="btn btn--outline" href="detalhes-salao.html?id=acacia">
             <i class="bx bx-show"></i> Ver página do salão
           </a>
         </section>
 
-        <section class="visit-metrics" aria-label="Resumo dos pedidos">
+        <section class="visit-metrics" id="ownerRequestsMetrics" aria-label="Resumo dos pedidos">
           <article class="card">
             <i class="bx bx-time-five"></i>
             <div>
@@ -113,7 +108,7 @@
           </article>
         </section>
 
-        <section class="workspace">
+        <section class="workspace" id="ownerVisitWorkspace">
           <div class="workspace__list">
             <div class="workspace__filters">
               <label class="search-box">
@@ -127,8 +122,10 @@
                 <option value="rescheduled">Nova data proposta</option>
                 <option value="completed">Realizada</option>
                 <option value="cancelled">Cancelada</option>
+                <option value="rejected">Rejeitada</option>
               </select>
             </div>
+            <div class="visit-table-head" aria-hidden="true"><span>Código</span><span>Nome do cliente</span><span>Salão</span><span>Estado da visita</span><span>Estado da reserva</span><span>Acções</span></div>
             <div class="visit-list scroll-y" id="visitList"></div>
           </div>
 
@@ -146,7 +143,7 @@
 
   <div class="backdrop" id="backdrop"></div>
   <div class="toast toast--corner" id="toast" role="status" aria-live="polite"></div>
-  <script src="../assets/js/app-shell.js"></script>
-  <script src="../assets/js/pages/owner-visits.js"></script>
+  <script src="../assets/js/app-shell.js?v=20260807-list-pagination"></script>
+  <script src="../assets/js/pages/owner-visits.js?v=20260807-reservation-state-flow"></script>
 </body>
 </html>

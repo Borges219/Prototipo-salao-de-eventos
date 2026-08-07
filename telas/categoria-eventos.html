@@ -23,7 +23,7 @@
       </button>
       <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
         <a href="Tela principal.html">Início</a>
-        <a href="Tela principal.html#espacos" aria-current="page">Explorar espaços</a>
+        <a href="espacos.html" aria-current="page">Explorar espaços</a>
         <a href="Tela principal.html#como-funciona">Como funciona</a>
         <a href="contactos.html">Contactos</a>
       </nav>
@@ -37,13 +37,15 @@
   <main>
     <section class="category-hero" id="categoryHero">
       <div class="wrap">
-        <div>
+        <div class="category-hero__content">
           <a class="back-link" href="Tela principal.html"><i class="bx bx-left-arrow-alt"></i> Voltar aos tipos de eventos</a>
           <span class="eyebrow" id="categoryEyebrow"></span>
           <h1 id="categoryTitle"></h1>
           <p id="categoryDescription"></p>
-          <div class="chips" id="categoryTags"></div>
-          <div class="chips" id="categoryBenefits"></div>
+          <div class="category-hero__chips">
+            <div class="chips" id="categoryTags"></div>
+            <div class="chips chips--benefits" id="categoryBenefits"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -72,49 +74,6 @@
       <div class="venue-grid" id="categoryVenueGrid"></div>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="wrap site-footer__top">
-      <div class="site-footer__brand">
-        <img src="../assets/images/espacon-logo.png" alt="Espaço ON" width="150" height="49">
-        <p>Encontre o espaço certo. Crie memórias que ficam.</p>
-      </div>
-
-      <div>
-        <h2>Navegar</h2>
-        <ul>
-          <li><a href="Tela principal.html">Início</a></li>
-          <li><a href="Tela principal.html#espacos">Espaços</a></li>
-          <li><a href="Tela principal.html#como-funciona">Como funciona</a></li>
-          <li><a href="contactos.html">Contactos</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h2>Categorias</h2>
-        <ul>
-          <li><a href="categoria-eventos.html?tipo=social">Eventos sociais</a></li>
-          <li><a href="categoria-eventos.html?tipo=corporativo">Eventos corporativos</a></li>
-          <li><a href="../auth/login.html">Entrar</a></li>
-          <li><a href="../auth/register.html">Criar conta</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h2>Contactos</h2>
-        <ul>
-          <li><i class="bx bxs-phone"></i> +258 84 000 0000</li>
-          <li><i class="bx bxs-envelope"></i> contacto@espacoon.co.mz</li>
-          <li><i class="bx bxs-map"></i> Av. Julius Nyerere, 1234</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="wrap site-footer__bottom">
-      <span>© 2026 Espaço ON · Maputo, Moçambique</span>
-      <span>Protótipo de demonstração</span>
-    </div>
-  </footer>
 
   <script src="../assets/js/portal.js"></script>
   <script src="../assets/js/categoria-eventos.js"></script>

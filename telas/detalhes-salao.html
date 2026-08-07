@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link href="../assets/css/icons.min.css" rel="stylesheet">
   <link href="../assets/css/base.css" rel="stylesheet">
-  <link href="../assets/css/portal.css" rel="stylesheet">
+  <link href="../assets/css/portal.css?v=20260804-password-modal" rel="stylesheet">
 </head>
 <body class="portal">
   <header class="site-header">
@@ -23,7 +23,7 @@
       </button>
       <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
         <a href="Tela principal.html">Início</a>
-        <a href="Tela principal.html#espacos" aria-current="page">Explorar espaços</a>
+        <a href="espacos.html" aria-current="page">Explorar espaços</a>
         <a href="Tela principal.html#como-funciona">Como funciona</a>
         <a href="contactos.html">Contactos</a>
       </nav>
@@ -36,7 +36,7 @@
 
   <main>
     <section class="venue-head wrap">
-      <a class="back-link" href="Tela principal.html#espacos"><i class="bx bx-left-arrow-alt"></i> Voltar aos espaços</a>
+      <a class="back-link" href="espacos.html"><i class="bx bx-left-arrow-alt"></i> Voltar à lista de espaços</a>
       <div class="venue-head__row">
         <div>
           <span class="eyebrow" id="venueType"></span>
@@ -124,15 +124,17 @@
         <form id="visitForm" novalidate>
           <label class="field">
             <span>Nome completo</span>
-            <input id="visitName" type="text" placeholder="Como devemos tratar-lhe?" autocomplete="name" required>
+            <input id="visitName" type="text" placeholder="Como devemos tratar-lhe?" autocomplete="off" required>
           </label>
           <label class="field">
             <span>Telefone</span>
-            <input id="visitPhone" type="tel" placeholder="+258 84 000 0000" autocomplete="tel" required>
+            <input id="visitPhone" type="tel" placeholder="+258 84 000 0000" autocomplete="off" required>
+            <small class="form-error" id="visitPhoneError" role="alert"></small>
           </label>
           <label class="field">
             <span>E-mail</span>
-            <input id="visitEmail" type="email" placeholder="nome@email.com" autocomplete="email" required>
+            <input id="visitEmail" type="email" placeholder="nome@email.com" autocomplete="off" required>
+            <small class="form-error" id="visitEmailError" role="alert"></small>
           </label>
           <div class="field-row">
             <label class="field">
@@ -150,17 +152,19 @@
               </select>
             </label>
           </div>
+          <p class="form-error" id="visitAvailabilityError" role="alert"></p>
           <label class="field">
             <span>Número de visitantes</span>
-            <input id="visitGuests" type="number" min="1" max="10" value="2" required>
+            <input id="visitGuests" type="number" min="1" max="10" placeholder="Ex.: 2" required>
           </label>
           <label class="field">
             <span>Observações</span>
             <textarea id="visitNotes" rows="3" placeholder="Alguma preferência ou questão?"></textarea>
           </label>
 
-          <button class="btn btn--primary btn--block" type="submit"><i class="bx bx-calendar-check"></i> Solicitar visita</button>
-          <small><i class="bx bx-info-circle"></i> Não precisa de criar conta. A instituição confirmará ou proporá outro horário.</small>
+          <p class="form-error" id="visitAccountError" role="alert"></p>
+          <button class="btn btn--primary btn--block" type="submit"><i class="bx bx-calendar-check"></i> Solicitar visita e continuar</button>
+          <small><i class="bx bx-lock-alt"></i> Ao continuar, criaremos gratuitamente a sua conta para acompanhar a visita e falar com o proprietário.</small>
         </form>
       </aside>
     </div>
@@ -172,8 +176,34 @@
     <p id="lightboxCaption"></p>
   </div>
 
+  <div class="otp-modal" id="otpModal" hidden>
+    <div class="otp-modal__card" role="dialog" aria-modal="true" aria-labelledby="otpTitle">
+      <span class="otp-modal__icon"><i class="bx bx-message-square-check"></i></span>
+      <span class="eyebrow">Verificação de conta</span>
+      <h2 id="otpTitle">Confirme o seu telefone</h2>
+      <p id="otpIntro">Enviámos um código de 6 dígitos para <strong id="otpDestination"></strong>.</p>
+      <div class="otp-demo" id="visitOtpDemo"><small>Código fictício para demonstração</small><strong>246810</strong></div>
+      <form id="otpForm">
+        <label class="field">
+          <span>Código OTP</span>
+          <input id="otpCode" type="text" inputmode="numeric" maxlength="6" pattern="[0-9]{6}" placeholder="000000" autocomplete="one-time-code" required>
+        </label>
+        <p class="form-error" id="otpError" role="alert"></p>
+        <button class="btn btn--primary btn--block" type="submit">Validar e continuar</button>
+        <button class="otp-cancel" id="otpCancel" type="button">Voltar ao formulário</button>
+      </form>
+      <form id="visitActivationForm" hidden>
+        <p class="activation-note"><strong>Contacto confirmado com sucesso.</strong><br>Crie uma senha segura para acompanhar esta visita, receber respostas e conversar com o proprietário.</p>
+        <div class="field password-field"><label for="visitPassword"><span>Nova senha</span></label><input id="visitPassword" name="password" type="password" minlength="8" autocomplete="new-password" placeholder="Mínimo de 8 caracteres" required><button type="button" data-visit-password="visitPassword" aria-label="Mostrar senha"><i class="bx bx-show"></i></button></div>
+        <div class="field password-field"><label for="visitPasswordConfirmation"><span>Confirmar senha</span></label><input id="visitPasswordConfirmation" name="confirmation" type="password" minlength="8" autocomplete="new-password" placeholder="Digite novamente a senha" required><button type="button" data-visit-password="visitPasswordConfirmation" aria-label="Mostrar senha"><i class="bx bx-show"></i></button></div>
+        <p class="form-error" id="visitActivationError" role="alert"></p>
+        <button class="btn btn--primary btn--block" type="submit">Ativar conta e acompanhar visita</button>
+      </form>
+    </div>
+  </div>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="../assets/js/portal.js"></script>
-  <script src="../assets/js/detalhes-salao.js"></script>
+  <script src="../assets/js/portal.js?v=20260804-reset-visits"></script>
+  <script src="../assets/js/detalhes-salao.js?v=20260805-agenda-availability"></script>
 </body>
 </html>
