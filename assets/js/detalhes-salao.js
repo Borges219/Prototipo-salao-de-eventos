@@ -234,19 +234,50 @@ document.addEventListener('DOMContentLoaded', function () {
   fill('venueLocation', venue.location);
   fill('venueRating', venue.rating);
   fill('venueReviews', venue.reviews);
-  fill('venueAboutTitle', 'Conheça o ' + venue.name);
-  fill('venueDescription', venue.description);
-  fill('venueDimension', venue.dimension);
-  fill('venueCapacity', venue.capacity);
-  fill('venuePrice', venue.price);
-  fill('venueParking', venue.parking);
-  fill('basePrice', venue.price);
+  fill('quickCapacity', venue.capacity.replace('Até ', ''));
+  fill('quickPrice', venue.price.replace('Desde ', ''));
+  fill('quickParking', venue.parking);
+  fill('quickServices', venue.services.length + ' serviços');
 
-  document.getElementById('venueServices').innerHTML = venue.services
-    .map(function (service) {
-      return '<span><i class="bx bx-check"></i>' + service + '</span>';
-    })
-    .join('');
+  var commercialData = {
+    spaces: [
+      { name:'Salão Principal', capacity:'400 pessoas', area:'500 m²', features:['Ar condicionado','Sistema de som','Palco','Wi-Fi'] },
+      { name:'Salão Executivo', capacity:'150 pessoas', area:'180 m²', features:['Ar condicionado','Projector','Wi-Fi'] },
+      { name:'Sala de Conferências', capacity:'80 pessoas', area:'100 m²', features:['Projector','Wi-Fi','Sistema de som'] },
+      { name:'Área Externa', capacity:'300 pessoas', area:'Área aberta', features:['Estacionamento próximo','Espaço para decoração'] }
+    ],
+    benefits: [
+      ['Estacionamento','included'],['Ar condicionado','included'],['Sistema de som','included'],['Wi-Fi','included'],['Projector','included'],['Palco','included'],['Segurança','included'],['Gerador','included'],['Catering','optional'],['Decoração','optional'],['Fotografia','optional'],['Limpeza','optional']
+    ],
+    plans: [
+      { id:'essential', name:'Essencial', price:50000, capacity:100, description:'Uma opção económica para eventos de pequena dimensão.', featured:false, benefits:['1 espaço','Capacidade para 100 pessoas','30 lugares de estacionamento','10 mesas','100 cadeiras','Sistema de som','2 agentes de segurança'] },
+      { id:'standard', name:'Standard', price:80000, capacity:200, description:'O equilíbrio ideal entre espaço, serviços e comodidades.', featured:true, benefits:['1 espaço','Capacidade para 200 pessoas','70 lugares de estacionamento','20 mesas','200 cadeiras','Sistema de som','1 projector','Catering para 200 pessoas','4 agentes de segurança','Decoração','Wi-Fi'] },
+      { id:'premium', name:'Premium', price:130000, capacity:400, description:'Uma experiência completa para eventos de grande dimensão.', featured:false, benefits:['2 espaços','Capacidade para 400 pessoas','150 lugares de estacionamento','40 mesas','400 cadeiras','Sistema de som','2 projectores','Catering para 400 pessoas','8 agentes de segurança','Decoração','Fotografia','Gerador','Camarim','Wi-Fi'] }
+    ],
+    comparison: [
+      ['Espaços','1','1','2'],['Capacidade','100','200','400'],['Estacionamento','30','70','150'],['Mesas','10','20','40'],['Cadeiras','100','200','400'],['Sistema de som','✓','✓','✓'],['Projector','—','✓','2'],['Catering','—','200 pessoas','400 pessoas'],['Segurança','2 agentes','4 agentes','8 agentes'],['Decoração','—','✓','✓'],['Fotografia','—','—','✓'],['Gerador','—','—','✓'],['Camarim','—','—','✓'],['Wi-Fi','—','✓','✓']
+    ],
+    extras: [
+      ['Fotografia','Cobertura fotográfica profissional','15.000 MT'],['Filmagem','Registo integral do evento','20.000 MT'],['Decoração Premium','Conceito e montagem personalizada','25.000 MT'],['DJ','DJ e equipamento durante o evento','12.000 MT'],['Projector adicional','Projector com ecrã de apoio','5.000 MT'],['100 cadeiras adicionais','Mobiliário adicional para convidados','10.000 MT'],['50 lugares adicionais','Ampliação da área de estacionamento','5.000 MT']
+    ]
+  };
+  var selectedPlan = null;
+  var selectedExtras = [];
+  var requestMode = 'visit';
+
+  document.getElementById('venuePlans').innerHTML=commercialData.plans.map(function(plan){return '<article class="commercial-plan '+(plan.featured?'is-featured':'')+'">'+(plan.featured?'<span class="plan-badge">Mais escolhido</span>':'')+'<h3>Plano '+plan.name+'</h3><p>'+plan.description+'</p><strong class="plan-price">'+plan.price.toLocaleString('pt-PT')+' MT</strong><ul>'+plan.benefits.map(function(benefit){return '<li><i class="bx bx-check"></i>'+benefit+'</li>';}).join('')+'</ul><button class="btn '+(plan.featured?'btn--primary':'btn--outline')+' btn--block" type="button" data-plan="'+plan.id+'">Escolher plano</button></article>';}).join('');
+  document.getElementById('planComparison').innerHTML='<div class="comparison-row comparison-head"><strong>Benefício</strong><strong>Essencial</strong><strong>Standard</strong><strong>Premium</strong></div>'+commercialData.comparison.map(function(row){return '<div class="comparison-row"><strong>'+row[0]+'</strong><span data-plan-label="Essencial">'+row[1]+'</span><span data-plan-label="Standard">'+row[2]+'</span><span data-plan-label="Premium">'+row[3]+'</span></div>';}).join('');
+  document.getElementById('venueExtras').innerHTML=commercialData.extras.map(function(extra,index){return '<article class="extra-card"><div><h3>'+extra[0]+'</h3><p>'+extra[1]+'</p></div><strong>'+extra[2]+'</strong><button class="btn btn--outline" type="button" data-extra="'+index+'">Adicionar</button></article>';}).join('');
+
+  function choosePlan(planId){selectedPlan=commercialData.plans.find(function(plan){return plan.id===planId;});document.querySelectorAll('[data-plan]').forEach(function(button){var active=button.dataset.plan===planId;button.closest('.commercial-plan').classList.toggle('is-selected',active);button.textContent=active?'Plano selecionado':'Escolher plano';});setRequestMode('reservation');document.getElementById('visitNotes').value='Pacote pretendido: Plano '+selectedPlan.name+'.';document.querySelector('.booking-card').scrollIntoView({behavior:'smooth',block:'start'});}
+  document.querySelectorAll('[data-plan]').forEach(function(button){button.addEventListener('click',function(){choosePlan(button.dataset.plan);});});
+  document.querySelectorAll('[data-extra]').forEach(function(button){button.addEventListener('click',function(){var extra=commercialData.extras[Number(button.dataset.extra)][0];var index=selectedExtras.indexOf(extra);if(index<0){selectedExtras.push(extra);button.textContent='Adicionado';button.classList.add('btn--primary');}else{selectedExtras.splice(index,1);button.textContent='Adicionar';button.classList.remove('btn--primary');}});});
+  document.getElementById('recommendGuests').addEventListener('input',function(){var guests=Number(this.value);var result=document.getElementById('recommendationResult');if(!guests){result.textContent='Informe o número de convidados.';return;}var plan=commercialData.plans.find(function(item){return guests<=item.capacity;});result.innerHTML=plan?'<strong>Plano '+plan.name+' recomendado</strong><span>Adequado para eventos até '+plan.capacity+' pessoas.</span>':'<strong>Contacte o salão</strong><span>O número indicado ultrapassa a capacidade dos pacotes disponíveis.</span>';});
+  function setRequestMode(mode){requestMode=mode==='reservation'?'reservation':'visit';var reservation=requestMode==='reservation';document.querySelectorAll('[data-request-mode]').forEach(function(button){button.classList.toggle('is-active',button.dataset.requestMode===requestMode);});document.getElementById('bookingTitle').textContent=reservation?'Solicitar uma reserva':'Agendar uma visita';document.getElementById('bookingDescription').textContent=reservation?'Escolha a data do evento e envie o pedido directamente ao proprietário. Não é necessário visitar primeiro.':'Escolha uma data e horário disponíveis para visitar o espaço.';document.getElementById('bookingDateLabel').textContent=reservation?'Data do evento':'Data da visita';document.getElementById('bookingGuestsLabel').textContent=reservation?'Número de convidados':'Número de visitantes';var guests=document.getElementById('visitGuests');guests.max=reservation?'1000':'10';guests.placeholder=reservation?'Ex.: 200':'Ex.: 2';document.getElementById('bookingSubmit').innerHTML=reservation?'<i class="bx bx-bookmark"></i> Solicitar reserva e continuar':'<i class="bx bx-calendar-check"></i> Solicitar visita e continuar';}
+  document.querySelectorAll('[data-request-mode]').forEach(function(button){button.addEventListener('click',function(){setRequestMode(button.dataset.requestMode);});});
+  document.querySelectorAll('[data-scroll-booking]').forEach(function(button){button.addEventListener('click',function(){setRequestMode(button.dataset.bookingMode||'visit');document.querySelector('.booking-card').scrollIntoView({behavior:'smooth',block:'start'});});});
+  document.querySelectorAll('[data-scroll-plans]').forEach(function(button){button.addEventListener('click',function(){document.getElementById('venuePlansSection').scrollIntoView({behavior:'smooth',block:'start'});});});
+  document.querySelectorAll('[data-contact-venue]').forEach(function(button){button.addEventListener('click',function(){window.location.href='contactos.html?venue='+encodeURIComponent(venue.name);});});
 
   /* Galeria com ampliação. */
   var lightbox = document.getElementById('lightbox');
@@ -379,10 +410,18 @@ document.addEventListener('DOMContentLoaded', function () {
       time: document.getElementById('visitTime').value,
       guests: Number(document.getElementById('visitGuests').value),
       notes: document.getElementById('visitNotes').value.trim(),
+      selectedPlan: selectedPlan ? { id:selectedPlan.id, name:selectedPlan.name, price:selectedPlan.price } : null,
+      selectedExtras: selectedExtras.slice(),
       status: 'pending',
       createdAt: new Date().toISOString(),
       messages: []
     };
+    pendingRequest.requestType = requestMode;
+    if (requestMode === 'reservation') {
+      pendingRequest.eventDetails = { type:'Reserva directa', date:dateInput.value, time:pendingRequest.time, guests:pendingRequest.guests, budget:selectedPlan ? String(selectedPlan.price) : 'Por definir', services:selectedExtras.slice(), notes:pendingRequest.notes, selectedPlan:selectedPlan ? { id:selectedPlan.id,name:selectedPlan.name,price:selectedPlan.price } : null, sentAt:new Date().toISOString() };
+      pendingRequest.negotiationStatus = 'interested';
+      pendingRequest.reservationStatus = 'pending';
+    }
 
     if (bookingFromProfile && session && session.role === 'client') {
       pendingRequest.clientId = session.userId;

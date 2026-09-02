@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var session = JSON.parse(window.localStorage.getItem('espacon_session') || 'null');
   var allRequests = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || '[]');
-  var requests = session && session.role === 'owner' ? allRequests.filter(function (request) { return request.ownerId === session.userId; }) : [];
+  var requests = session && session.role === 'owner' ? allRequests.filter(function (request) { return request.ownerId === session.userId && request.requestType !== 'reservation'; }) : [];
   var proposals = JSON.parse(window.localStorage.getItem(PROPOSALS_KEY) || '[]');
   var selectedId = detailMode ? routeParams.get('visit') : null;
   workspace.classList.add(detailMode ? 'is-detail-only' : 'is-list-only');

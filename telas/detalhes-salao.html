@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <link href="../assets/css/icons.min.css" rel="stylesheet">
   <link href="../assets/css/base.css" rel="stylesheet">
-  <link href="../assets/css/portal.css?v=20260804-password-modal" rel="stylesheet">
+  <link href="../assets/css/portal.css?v=20260807-aligned-booking-fields" rel="stylesheet">
 </head>
 <body class="portal">
   <header class="site-header">
@@ -49,6 +49,7 @@
           <small id="venueReviews"></small>
         </div>
       </div>
+      <div class="venue-hero-actions"><button class="btn btn--primary" type="button" data-scroll-plans><i class="bx bx-purchase-tag"></i> Ver pacotes</button><button class="btn btn--outline" type="button" data-scroll-booking data-booking-mode="reservation"><i class="bx bx-bookmark"></i> Solicitar reserva</button><button class="btn btn--outline" type="button" data-scroll-booking data-booking-mode="visit"><i class="bx bx-calendar-check"></i> Solicitar visita</button><button class="btn btn--outline" type="button" data-contact-venue><i class="bx bx-phone"></i> Contactar</button></div>
     </section>
 
     <div class="wrap">
@@ -61,65 +62,14 @@
       </section>
     </div>
 
-    <div class="wrap detail-grid">
-      <div>
-        <section>
-          <span class="eyebrow">Sobre o espaço</span>
-          <h2 id="venueAboutTitle"></h2>
-          <p id="venueDescription"></p>
+    <section class="wrap commercial-quick-facts" aria-label="Informações rápidas"><article><i class="bx bx-group"></i><strong id="quickCapacity"></strong><span>Capacidade máxima</span></article><article><i class="bx bx-wallet"></i><strong id="quickPrice"></strong><span>Preço inicial</span></article><article><i class="bx bx-car"></i><strong id="quickParking"></strong><span>Estacionamento</span></article><article><i class="bx bx-check-shield"></i><strong id="quickServices"></strong><span>Serviços disponíveis</span></article></section>
 
-          <div class="facts">
-            <div>
-              <i class="bx bx-ruler"></i>
-              <small>Dimensão</small>
-              <strong id="venueDimension"></strong>
-            </div>
-            <div>
-              <i class="bx bx-group"></i>
-              <small>Capacidade</small>
-              <strong id="venueCapacity"></strong>
-            </div>
-            <div>
-              <i class="bx bx-wallet"></i>
-              <small>Preço inicial</small>
-              <strong id="venuePrice"></strong>
-            </div>
-            <div>
-              <i class="bx bx-car"></i>
-              <small>Estacionamento</small>
-              <strong id="venueParking"></strong>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <h2>Serviços e comodidades</h2>
-          <p>Alguns serviços são opcionais e podem alterar o valor final da proposta.</p>
-          <div class="services" id="venueServices"></div>
-        </section>
-
-        <section>
-          <h2>Referência de preços</h2>
-          <div class="pricing-row">
-            <span>Aluguer do espaço</span>
-            <strong id="basePrice"></strong>
-          </div>
-          <div class="pricing-row">
-            <span>Decoração personalizada <em>Opcional</em></span>
-            <strong>Sob consulta</strong>
-          </div>
-          <div class="pricing-row">
-            <span>Catering por pessoa <em>Opcional</em></span>
-            <strong>Desde 1.250 MZN</strong>
-          </div>
-          <p class="pricing-note">O preço final depende da data, duração, número de convidados e serviços escolhidos.</p>
-        </section>
-      </div>
-
+    <div class="wrap booking-section">
       <aside class="booking-card">
+        <div class="booking-mode" role="tablist" aria-label="Tipo de solicitação"><button class="is-active" type="button" data-request-mode="visit"><i class="bx bx-calendar-check"></i> Solicitar visita</button><button type="button" data-request-mode="reservation"><i class="bx bx-bookmark"></i> Solicitar reserva</button></div>
         <span class="eyebrow">Conheça antes de reservar</span>
-        <h2>Agendar uma visita</h2>
-        <p>Escolha uma data e horário disponíveis para visitar o espaço.</p>
+        <h2 id="bookingTitle">Agendar uma visita</h2>
+        <p id="bookingDescription">Escolha uma data e horário disponíveis para visitar o espaço.</p>
 
         <form id="visitForm" novalidate>
           <label class="field">
@@ -138,7 +88,7 @@
           </label>
           <div class="field-row">
             <label class="field">
-              <span>Data da visita</span>
+              <span id="bookingDateLabel">Data da visita</span>
               <input id="visitDate" type="date" required>
             </label>
             <label class="field">
@@ -154,7 +104,7 @@
           </div>
           <p class="form-error" id="visitAvailabilityError" role="alert"></p>
           <label class="field">
-            <span>Número de visitantes</span>
+            <span id="bookingGuestsLabel">Número de visitantes</span>
             <input id="visitGuests" type="number" min="1" max="10" placeholder="Ex.: 2" required>
           </label>
           <label class="field">
@@ -163,11 +113,17 @@
           </label>
 
           <p class="form-error" id="visitAccountError" role="alert"></p>
-          <button class="btn btn--primary btn--block" type="submit"><i class="bx bx-calendar-check"></i> Solicitar visita e continuar</button>
+          <button class="btn btn--primary btn--block" id="bookingSubmit" type="submit"><i class="bx bx-calendar-check"></i> Solicitar visita e continuar</button>
           <small><i class="bx bx-lock-alt"></i> Ao continuar, criaremos gratuitamente a sua conta para acompanhar a visita e falar com o proprietário.</small>
         </form>
       </aside>
     </div>
+
+    <section class="wrap commercial-section" id="venuePlansSection"><div class="commercial-heading commercial-heading--center"><span class="eyebrow">Pacotes do proprietário</span><h2>Escolha o pacote ideal para o seu evento</h2><p>Cada pacote foi pensado para diferentes necessidades. Compare os benefícios e escolha a opção mais adequada.</p></div><div class="plan-grid" id="venuePlans"></div></section>
+    <section class="wrap commercial-section"><div class="commercial-heading"><span class="eyebrow">Comparação</span><h2>Compare os pacotes</h2><p>Veja rapidamente o que está incluído em cada opção.</p></div><div class="plan-comparison" id="planComparison"></div></section>
+    <section class="wrap plan-recommender"><div><span class="eyebrow">Não sabe qual escolher?</span><h2>Encontre o pacote adequado</h2><p>Indique quantas pessoas terá o seu evento para receber uma recomendação.</p></div><label>Número de pessoas<input id="recommendGuests" type="number" min="1" max="400" placeholder="Ex.: 350"></label><div class="recommendation-result" id="recommendationResult">Informe o número de convidados.</div></section>
+    <section class="wrap commercial-section"><div class="commercial-heading"><span class="eyebrow">Personalize o evento</span><h2>Serviços adicionais</h2><p>Adicione serviços que não estejam incluídos no pacote escolhido.</p></div><div class="extra-grid" id="venueExtras"></div></section>
+    <section class="commercial-cta"><div class="wrap"><div><span class="eyebrow">O próximo evento começa aqui</span><h2>Pronto para reservar este espaço?</h2><p>Escolha o pacote que corresponde às suas necessidades e envie uma solicitação.</p></div><div><button class="btn btn--primary" type="button" data-scroll-booking data-booking-mode="reservation">Solicitar reserva</button><button class="btn btn--outline" type="button" data-scroll-booking data-booking-mode="visit">Solicitar visita</button><button class="btn btn--outline" type="button" data-contact-venue>Falar com o salão</button></div></div></section>
   </main>
 
   <div class="lightbox" id="lightbox" hidden>
@@ -204,6 +160,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="../assets/js/portal.js?v=20260804-reset-visits"></script>
-  <script src="../assets/js/detalhes-salao.js?v=20260805-agenda-availability"></script>
+  <script src="../assets/js/detalhes-salao.js?v=20260807-direct-reservations"></script>
 </body>
 </html>
